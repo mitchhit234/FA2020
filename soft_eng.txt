@@ -1,3 +1,12 @@
 Look at the discussion board for other ideas
 
 Brainstorm ideas, post final ideas to discussion board
+
+
+Gym idea, QR Codes on each machine (or some other form of identification) that are scannable to identifty a machine. Saved favoriates/most used?
+
+Be given reccomended excersices on that machine that is scanned. Reccomendations can be based off machine, past excersices (either earlier in the day or a past excersice), preferences, etc.
+
+Leaderboards for certain machines. PRs per different categories, for different time periods.
+
+
