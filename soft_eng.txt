@@ -2,3 +2,5 @@ Notes for software engineering
 
 
 testing lazygit
+
+testing lazygit2
