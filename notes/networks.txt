@@ -1,0 +1,139 @@
+8-24
+
+The internet is billions of connected computing devices of three types:
+	
+	Computing Devices:
+	Hosts/end systems, they run network apps at internet's "edge"
+
+	Routers:
+	Packet switches: forward "packets" between hosts (chunks of data)
+	Ex: routers, switches
+
+	Links:
+	Communication links (wired and wireless)
+	Ex: fiber, copper, radio, satellite
+	Transmission rate: bandwith
+
+
+Networks are a collection of devices, routers, and links, managed by an organization
+
+The internet is essentially a network of networks (Interconnected ISPs)
+
+
+
+
+
+The internet is also an infrastructure that provides services to applications
+
+Protocols control sending and reciving of messages
+Ex: HTTP, ICP, IP, WiFi, 4G, Ethernet
+
+Internet standards
+RFC: Request for comments
+IETF: Internet Engineering Task Force
+
+
+Network core consists of interrconnected routers
+Ex: local/regional or national/global ISPs (11)
+
+
+
+The internet provides a programming interface to distributed applications
+
+Hooks allow sending/reciving of apps to connect to and use internet transport service
+
+Provides service options, similar to postal service
+
+
+
+Back to the internet structure:
+
+Connect end systems to edge routers with:
+Residential access nets
+Institutional acces networks (school, company)
+Mobile access networks (WiFi, 4G, 5G)
+
+Tranmission rate and shared/dedicated access among users effect performance
+
+
+
+
+
+8-26
+
+Frequency division multiplexing (FDM) are different channels transmitting different frequency bands
+
+
+Acces via cable based: (14)
+Hybrid fiber coax (HFC) has up to 1.2 Gbs down, up to 100 Mbps up
+
+Acces via digital subscriber line: (13)
+use existing telephone line to central office DSLAM
+up to 50 Mbps down, 16 Mbps up
+
+
+
+Wireless access networks is shared among multipule end systems and connects them to the router
+
+Wireless local area networks (WLAN) are typically within or around building (100ft)
+
+Wide area celluar access networks are provided by celluar networks, typically 10km radius, slower transmission rate than WLANs
+
+
+Enterprise networks are operated by companies, universities, etc
+Mix of wired, wireless linked technologies, connecting multipule different switches and routers
+
+
+
+
+
+Host sending function:
+takes application message,
+breaks into smaller chuncks, known as packets, of length L bits,
+transmits packet into access network at link transmission rate R
+
+packet transmission delay = L/R (bits/bits per second)
+
+
+
+Links: physical media
+
+bit propagates between transmitter and reciever
+the physical link is what lies between transmitter and reciever
+guided media is when signals propogate in a solid media (copper, fiber, coax)
+unguded media is when signals propogate freely (radio, WiFi)
+
+types of solid media:
+twisted pair - two insulated copper wires (Cat 5/6)
+coaxial cable - two concentric copper conductors, bidirectional, brodband. multipule frequency channels on cable, 100's Mbps per channel
+fiber optic cable - glass fiber carrying light pulses, each pulse being a bit. high speed operation (100's Gbps), low error rate (immune to electromagnetic noise)
+
+types of unguided media:
+wireless radio - signal carried in electromagnetic spectrum. can be obstructed by the environment
+terrstrial microwave, wireless LAN, wide area celluar, satellite
+
+
+
+
+
+Packet-switching is when the hosts break application-layer messahes into packets
+Transmission delay takes L/R seconds to transmit an L-bit packet at R bps
+Store and forward: entire packet must arrive at router before it can be transmitted to the next link
+End-end delay: 2L/R(above), assuming zero propagation delay
+
+Packet queuing and loss: if arrival rate to link exceeds the transmission rate of link, packets will queue, waiting to be transmitted on output link OR packets can be dropped if memory buffer in router fills up
+
+Forwarding: local action, move arriving packets from router's input link to appropriate router output link
+Routing: global action, determine source to destination paths taken by packets
+
+
+
+Circuit switching is an alternative to packet switching where end-end resources are allocated, and reserved for a call between the source and destination
+Has dedicated resources, no sharing enables guaranteed performance
+Circuit segment idle if not being used by that specific host
+Not used that much today, but used in traditional telephone networks
+
+
+Frequency Division Multiplexing (FDM) is like the way described above
+
+Time Division Multiplexing (TDM) has slots divided by time, each call allocated can transmit at maximum rate of wider freqeucny bands, but only during its time slots
