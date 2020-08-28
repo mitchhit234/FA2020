@@ -1,0 +1,37 @@
+Data are known facts that can be recorded, and has implicit meaning
+
+Annual size of the global datasphere is growing exponentially
+
+Structed vs unstructed data
+Structuring unstructured data could be very benifical
+
+
+Database is a collection of related data
+
+DBMS is a system that enables users to create and maintain a database (think SSMS)
+
+Database System is the combination of the database, DBMS, and application
+
+
+A DBMS does many tasks:
+
+Controls Redundancy
+Restricting Unauthorized access
+Providing Persistent Storage
+Efficent Querying Process
+Backup and Recovery
+Multipule User Interfaces
+Representation of Complex Relationships
+Integrity Constraints
+Interference Actions
+
+
+
+Architecture
+Lots of systems have the application and DBMS on seperate servers
+Some also have an application server between the application and database servers
+With an application server, you can store logic that is requested by different types of applications (web browser, iphone app, etc.) Reduces effort of future modifications needed, isolates application to changes on the database
+
+
+
+
