@@ -27,3 +27,137 @@ Talking points:
 	- 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What are the goals of this video?
+
+- Targeted at potential U.S. Bank Interns, Virtual Interns, and Comp Sci Interns
+
+- Give my run down on the internship, pros and cons
+
+- Give advice on what to do vs what not to do
+
+- Give advice on what to look for in an internship
+
+
+
+
+Timeline of events:
+
+- Phone interview -> hire for ten week summer internship
+
+- Announced a couple months before the start it would be shortened and virtual due to covid
+
+- A majority of interns kept their job, some did not though
+
+Fast forward to the start of the internship
+
+- Desginated to a team under Technology Services -> Mortgage Roadmap Development
+
+- Was given a virtual machine to do all my work on
+
+- In addition to team work, Campus Relations had a bunch of activites for interns as well, some voluntary some required. Biggest of them being a case competition that had us thrown into groups of all interns from random departments/cities
+
+- In my team, I had two managers and they assigned me to a project with a former intern who recently began full time. 
+
+- We worked on a project called TART, or Transactional Analysis R Tool, without getting too much into the details it was a statistical analysis tool that was to be used by other people in the department
+
+- I was tasked more so on supplying the data to the app as well as modifying it for server deploymnet
+
+- I worked on this, participating in most of the campus relations projects, and had an end of internship presentation as well
+
+
+
+
+What I liked:
+
+- The commitment to keep the internship by U.S. Bank
+
+- The team structure
+
+- The case competition
+
+- Lunch with leaders
+
+- Mentor program
+
+- The work
+
+
+What I did not like:
+
+- The work environment (virtual machine)
+
+- The onboarding process
+
+- Group meetings (lack of webcams)
+
+- Structure limited the ability to be creative
