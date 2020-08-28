@@ -137,3 +137,64 @@ Not used that much today, but used in traditional telephone networks
 Frequency Division Multiplexing (FDM) is like the way described above
 
 Time Division Multiplexing (TDM) has slots divided by time, each call allocated can transmit at maximum rate of wider freqeucny bands, but only during its time slots
+
+
+
+
+
+
+8-30
+
+
+Packet switching vs Circuit switching
+
+Packet switching allows more users to use the network
+Ex: 1 Gb/s, each user has 100Mb/s when active, but only active 10% of the time
+
+Circuit switching would allow up to 10 users
+Packet switching could allow 35 users easily, the probability that there are more than 10 active users at a time is less than 0.4%
+
+Packet switchintg is great for "bursty" data, but is also exposed to packet dealy and loss due to buffer overflow
+
+
+
+
+Internet structure:
+
+Hosts connect to internet via access ISPs
+Access ISPs are connected to each other, so any two hosts can send packets to each other
+Resulting network of networks is very complex, its evolution was driven by economics and national policies
+
+How do ISPs connect to each other?
+
+Connecting each asccess ISP to each other directly doesnt scale well [O(n^2)]
+
+One option is connecting each access ISP to one global transit ISP. Customer and provider ISPs work with each other to accomplish that
+There are more than one global ISP however; the market is competitive
+
+Global ISPs connect via an IXP (internet exchange point) or peering link (direct connecting between 2 global ISPs)
+Regional ISPs may also arise to connect cunsomer ISPs to Global ISPs
+
+Then Content provider networks (Google, Microsoft) may run their own network 
+to bring services and conent close to end users, bypassing tier 1 and even regional ISPs
+
+
+
+
+Packet delay, the four soucres:
+
+Nodal delay = d_proc + d_queue + d_trans + d_prop
+
+nodal processing: check bit errors, determine output link, typically < ms
+
+queueing delay: time waiting at output link for transmission, depends on cogestion level of router
+
+transmission delay: packet length divided by transmission rate (bps) (L/R)
+
+propagation delay: length of physical link divided by propagation speed (2x10^8 meters per second) (d/s)
+
+
+Throughput: rate at which bits are being sent from sender to reciever
+
+instantaneous: rate at a given point and time
+average: rate over longer period of time
