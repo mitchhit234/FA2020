@@ -198,3 +198,66 @@ Throughput: rate at which bits are being sent from sender to reciever
 
 instantaneous: rate at a given point and time
 average: rate over longer period of time
+
+
+
+
+
+8-31
+
+Networks are complex with many pieces
+- hosts
+- routers
+- links of various media
+- applications
+- protocols
+- hardware, software
+
+
+Layers: each layer implements a service cia its own internal-layer actions. They rely on services provided by layers before
+Explicit structure allows identification, relationship of complex system's pieces
+Modularization eases maintenance, updating of system
+Changes in layer's service implementation is transparent to the rest of the system
+
+
+Internet Protocol Stack is each layer put together (51)
+
+- Application Layer
+Supporting network applications (IMAP, SMTP, HTTP)
+
+- Transport Layer
+Process-process data transfer (TCP, UDP)
+
+- Network Layer
+Routing of datagrams from source to destination (IP, Routing Protocols)
+
+- Link Layer
+Data transfer between neighboring network elements (Ethernet, 802,11, WiFi, PPP)
+
+- Physical Layer
+Bits "on the wire"
+
+
+
+
+
+Internet was not originally designed with much security in mind. It was thought that it would contain a group of mutually trusting users attached to a transparent network
+Internet protocl designers have been trying to patch this issue
+
+
+Malware can get in to a host from:
+
+A virus - self replicating infection by receiving and executing object (EX: email attachment)
+A worm - self rplicating infection by passively receiving object that gets itself executed
+
+Spyware malware can record keystrokes, web sites visited, and upload info to a collection site
+
+Infected host can be enrolld in botnet, used for spam or distributed denial of service (DDos) attacks
+
+Denial of Service attackers make resources unavaliable to legitimate traffic by overwhelming the resource with bogus traffic
+
+Packet "sniffing" is reading/recording all packets passing by 
+
+IP spoofing sends packets with a false source address
+
+
