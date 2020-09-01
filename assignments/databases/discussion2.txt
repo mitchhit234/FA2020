@@ -1,0 +1,9 @@
+For my Miniworld, I chose to represent the vending machines and the food items that they contain here on campus. This Miniworld includes all the vending machines that are located on Missouri S&T's campus, as well as their contents. The associated database will be used to analyze the type and location of all vending machines on campus, as well as all the food items they contain and descriptive attributes of those items. It will also keep track of what type of items are in which type of vending machines, in order to organize them correctly.
+
+
+The two entities I have listed in my ER Diagram are "Food Item" and "Vending Machine". They have a one to many relationship since many food items can be in a vending machine, but a specific snack can only be in one vending machine. 
+
+For the food item entity, I have the primary key set to an integer ID value that will be unique to every item. This is added to seperatley record two items if they happen to have of the same name, type, cost, and are in the same vending machine (EX: 2 CHEEZ-IT bags). After ID, comes the Name attribute, which describes the food item while also deriving the type (EX: Dr. Pepper derives a beverage, Lays derives chips, etc.). The last attribute is the customer's cost for said item.
+
+For the Vending Machine entity, I have the primary key set to an integer ID value for the same reason as I did for food item. Then I have an attribute for the type of machine, which would be either a beverage type or snack type. After that are two attributes that describe the location of the vending machine, building name and floor number.
+
