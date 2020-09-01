@@ -1,0 +1,74 @@
+1.1
+What is deep learning?
+
+Deep learning is a class of Neural Network Algorithims
+
+Neural networks are a branch of Machine learning
+
+Machine learning is a branch of Artifical Intelligene
+
+
+Deep Learning <- Neural Networks <- Machine Learning <- Arifitcal Intelligence
+
+
+
+Artifical Intelligence - How to make computers do things at which, so far, humans are better (EX: Cars that drive themselves, Computers that play Chess)
+
+
+
+Dijkstra asks the questions: Can machines think?
+Student say no...
+Then he asks: Can submarines swim?
+Students mostly say no
+Then he asks: Can planes fly?
+Everyone says yes
+
+Dijkstra's perspective is that thinking is computation, and in essence, computers can think
+
+
+
+New definition for A.I. - the field that studies the synthesis and analysis of computational agents that act intelligently
+
+Agent - an entity that acts in an environment
+
+Computational - behavior can be described in terms of computation
+
+Acting Intelligenly - Does the agent:
+Do what is appropriate for its circumstances and goals?
+Is flexible in changing to its environments and changing goals?
+Learns from experience?
+Makes the appropriate choices given its perceptual and computational liminations?
+
+
+
+A.I. is not a field about how to imitate humans, instead it is a broad collection of different techniques and algorithims each intended to a particular purpose
+
+
+
+
+Machine Learning is the branch of A.I. that studies learning mechanisims for Intelligent Agents
+
+Learning:
+- The range of behaviors is expanded; the agent can do more
+- The accuracy on tasks is improved; the agent can be better
+- The speed on tasks is improved; the agent can be faster
+
+
+
+
+Neural Networks:
+A computational learning mechanisim inspirde by the function of biological neurons (Not exactly a simulation)
+
+Neural Networks are usually used for supervised learning. Neural Networks are used to recognize patterns from training data
+
+But as the size of the data grows, the time needed for learning grows at an exponential rate (The curse of dimensionality)
+
+Deep learning is what is used to counter the effects of the curse of dimensionality
+
+
+
+
+Deep Learning:
+A class of Neural Network Architectures and Algorithms to address problems arising from large input data and large networks
+
+
