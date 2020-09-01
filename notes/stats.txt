@@ -1,0 +1,40 @@
+L1
+
+Natural variability is the realization that no two individuals are exactly identical
+
+Sampling variability is the realization that the results from any two given samples are not identical
+
+
+IVPPSS:
+Individual - one of the items examined by the researcher
+Variable - the characterisitc of the item being examined
+Population - all individuals of interest
+Parameter - summary of all data collected from the individuals (mean, median, etc.)
+Sample - the subsection of the population inspected in the actual experiment
+Statistic - same as parameter, but only for the sample (EX: mean of 50 items)
+
+
+
+Variable Types - Quantitative and Categorical
+
+
+Quantitative Variables are either Continuous or Discrete:
+Discrete is when the value is countable (EX: number of X ants) and continous is when the value is uncountable (EX: miles between X a﻿nd Y). No potential values exist between 1 and 2 ants, but an infinite number of values exists between 1 and 2 miles.
+
+Categorical variables are either Ordinal or Nominal
+Ordinal variables are variables with a natural order (Freshman, Sophmore, etc.) while Nominal variables are variables with no order or ranking (Red, Blue, etc.)
+
+
+
+
+A Retrospective Study uses data of a historical process archived over time
+
+A observational study observes and measures variables of interest but do not interfere to a point where the outcome would be effected
+
+A Designed experiment deliberately imposes some treatment on individuals in order to observe their subsequent responses.
+
+
+
+Lecture 2
+
+
