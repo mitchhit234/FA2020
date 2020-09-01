@@ -35,3 +35,12 @@ With an application server, you can store logic that is requested by different t
 
 
 
+8-31
+
+Phases of Design
+
+Miniworld: What in the real world are we trying to represent with our data?
+
+Requirements Collection and Analysis:
+Database Requirements and Functional (App) Requirements
+
