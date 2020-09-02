@@ -44,3 +44,59 @@ Miniworld: What in the real world are we trying to represent with our data?
 Requirements Collection and Analysis:
 Database Requirements and Functional (App) Requirements
 
+
+
+
+9-2
+
+The domain is the set of atomic values for an attribute A    dom(A)
+
+Examples:
+dom(EmplyeeID) = dddddddd  (d stands for digit)
+dom(Status) = (Active, Retired, Deceased, Inactive)
+
+
+Row/tuple:
+
+t = (v1, v2, v3, ... v_n) where each v_i has 1 <= i <= n is NULL or an element of  dom(A_i)
+
+
+Relation Schema:
+
+R(A1, A2, A3 ... A_n) where a is an attribute name
+
+Ex: AVENGERS(LNAME, FNAME, STATUS, ... ETC)
+
+
+Relation State:
+
+r(R)
+
+r = (t1, t2, t3, ... t_n) where t is a tuple defined earlier
+
+
+
+
+Characteristics of Relationships:
+
+Ordering of the Tuples:
+
+A relationship is a set of tuples, and sets have no order
+Therefore, ordering of tuples make no difference
+However, when retriving tuples, its usually good practice to order them in some way
+
+Ordering of the Values in a Tuple
+
+Ordering of values in a Tuple is essential because the spot of the value is how it is coordinated to its attribute
+The order of the attributes is not important however, as long as they are matching up to their correct values in the tuple
+However, when setting up attributes, usually putting the primary key as the first attribute is the best practice
+
+
+Values and NULLs in a Tuple
+
+Values in tuples are atomic. NULL is the absence of a value, therefore two tuples who have NULL for the same attribute do not have the same value for that attribute
+
+
+
+Interpretation of a Relation
+
