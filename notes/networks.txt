@@ -261,3 +261,104 @@ Packet "sniffing" is reading/recording all packets passing by
 IP spoofing sends packets with a false source address
 
 
+
+
+
+9-2
+
+Application Layer Chapter
+
+
+Creating a network app:
+- runs of different end systems
+- communicates over network
+
+No need to write software for network core devices. They do not run user applications. Putting applications on end systems allows for rapid app development and propagation
+
+
+Application architectures:
+- Client Server (includes data centers/cloud computing)
+- Peer to Peer (P2P)
+- Hybrid of client and P2P
+
+
+Client Server
+Server:
+- always on host
+- permenant IP address
+- often in data centers, scalable
+
+Client:
+- contact and communicate with server
+- may be intermittently connected
+- may have a dynamic IP address
+- do not communicate directly with other clients
+
+Examples: HTTP, IMAP, FTP
+
+
+
+Peer to Peer:
+- no always on server
+- abitrary end systems directly communicate
+- peers request service from other peers, provide service in return
+- peers are intermittently connected and change IP addresses
+
+Examples: P2P File Sharing
+
+
+
+Examples of Hybrid Systems: Skype, Zoom, IM
+
+
+
+
+Process communications
+Process: program running within a host
+
+Within a host, two processes communicate using inter process communication
+
+Processes in different hosts communicate by exchanging messages
+
+Client Process: process that initiates communication
+Server Process: process that waits to be contacted
+
+
+
+Processes send and recieve messages to/from its socket
+Socket is similar to a door:
+- Sending process shoves message out the door
+- Sending process relies on transport infastructure on the other side of the door to deliver the message to the socket at receiving process
+- Two sockets involved, one sending one receiving
+
+
+Addressing processes
+Example port numbers:
+- HTTP Server: 80
+- Mail Server: 25
+
+Application layer protocol:
+Defines type of messages exchanged (requests, response)
+Defines message syntax
+Defines message Semantics
+
+
+Public Domain (open protocols) defined in RFC'sm everyone has access to protocol definition
+
+Proprietary does not reveal the rules for their protocols (closed protocols)
+
+
+As it comes to data loss, some apps require 100% reliable data transfer, while some other apps (like audio apps) tolerate some data loss
+
+Some apps require low delay to be effective, so timing is an important variable
+
+Some apps requrie a minimum amount of throughput to be effective
+
+
+Internet transport protocols services
+
+TCP Service:
+- reliable transport
+- flow control, sender wont overwhelm reciever
+- congestions control, throttle sender when network overloaded
+- does not provide timing, minimum throughput guarantee, security
