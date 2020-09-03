@@ -1,4 +1,5 @@
-1.1
+Lec 1 Intro:
+
 What is deep learning?
 
 Deep learning is a class of Neural Network Algorithims
@@ -70,5 +71,61 @@ Deep learning is what is used to counter the effects of the curse of dimensional
 
 Deep Learning:
 A class of Neural Network Architectures and Algorithms to address problems arising from large input data and large networks
+
+
+
+
+
+
+
+
+
+Lec 2 A.I. and Agents:
+
+
+Goals of AI:
+Scientific Goal - to understand the principles that make intelligent behavior possible in natural or artifical systems
+Engineering Goal - design of useful, intelligent artifacts
+
+
+Inputs to an agent:
+Abilities - the set of actions an agent can perform
+Goals/Preferences - what the agent wants, its values
+Prior Knowledge - knowledge that the agent starts off knowing
+History - Current stimuli (input from the environment) and past stimuli
+
+
+Example Agent: Autonomus car
+
+Abilities - steer, accelerate, brake
+Goals - get to the destination quickly and safely
+Prior knowledge - street maps, road sign meanings, recognize various road blocks
+Stimuli - cameras for vision, GPS, microphones
+Past experiences - success/failures from previous trips
+
+
+
+
+Aspects of Intelligent Agents:
+
+Representation - How does the agent internally represent relevant information? With the Knowledge Base (abilities, preferences, prior experiences)
+
+How does the agent characterizes its goal?
+Optimal - the best solution according to given criteria
+Satisficing - a good enough solution by some criteria
+Approximate - mesaure of quality is good enough
+Probable - something like a good solution
+
+When does the computational work of the agent take place?
+Design - done by designer
+Offline - done by agent before acting, provides part of knowledge base
+Online - done by agent between reciving stumli and acting
+
+
+
+
+
+
+
 
 
