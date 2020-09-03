@@ -35,6 +35,23 @@ A Designed experiment deliberately imposes some treatment on individuals in orde
 
 
 
-Lecture 2
+L2
+
+Example of a designed project
 
 
+Project Topic - The effect of ball type and shot distance on the ability of a shooter to make a shot
+
+Objective - Assess the effect of the type of ball and shot distance on number of shots made
+
+Motivation for Experiment - If this experiment shows that the type/distance significantly effect ability to make a shot, players can improve their skill practicing these harder shots
+
+Response Variable - Number of shots made out of X
+
+Factors - Type of ball and Shot Distance
+
+
+
+Randomization - used some sort of random number generator to decide the way/the order you conduct your experiment
+
+Replication - Each combination of factors will be performed mutlipule times to improve accuracy
