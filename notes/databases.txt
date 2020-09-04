@@ -97,6 +97,32 @@ Values and NULLs in a Tuple
 Values in tuples are atomic. NULL is the absence of a value, therefore two tuples who have NULL for the same attribute do not have the same value for that attribute
 
 
+Constraints
 
-Interpretation of a Relation
+Inherent model-based contrainsts (implicit constraints)
+- Domain Constraints (Integers, Chars, Date Format, etc)
+within each tuple, the value v of each attribute A must be an atomic value from the domain of A
+domains can be defined by data type, data range, or an enumerated list of acceptable values
 
+Schema based constraints (explicit contraints)
+- Key constraints, entity integrity constraints, referential integrity constraints
+It is important for every tuple to be uniqley identifiable
+Superkey - subset of attributes with the property that no two tuples in and relation have the same combination of values
+Key - a superkey such that removing attribute A from K makes K not a superkey (a minimal superkey)
+Candidate Key - Term for each key of a relation that has more than 1 key
+Primary Key - The designated candidate key used to identify tuples
+Unique Key - Candidate Key that is not a Primary Key
+
+
+Integirty Constraints
+
+Databases are only valid is it is in a state that satifies all rules of the Integrity Constrains
+
+Entity Integrity
+No Primary Key value can be NULL
+
+Referential Integrity
+Given two relations that refer to each either, a Tuple in one relation must refer to an exisiting tuple in another
+A set of attributes in R1 is a foregin key of R1 that references R2 if:
+- the domain of attributes in the forgeinkey is the same as the domain of the attributes in the Primary Key of R2
+- the values of FK in the tuple in R1 occurs as values of the PK for some tuple in R2
