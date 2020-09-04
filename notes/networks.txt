@@ -362,3 +362,68 @@ TCP Service:
 - flow control, sender wont overwhelm reciever
 - congestions control, throttle sender when network overloaded
 - does not provide timing, minimum throughput guarantee, security
+- connection oriented, setup required between client and server processes
+
+UDP Service:
+- unreliable data transfer between sending and receiving process
+- does not provide reliability, flow control, congestion control, timing, throughput, security, or connection setup
+
+
+Securing TCP:
+
+Security Socket Layer (SSL):
+- provides encrypted TCP connections
+- data integrity 
+- end point authentication
+SSL is implemented in the application layer
+
+
+
+
+
+Web and HTTP
+
+Web page consists of objects stored on different Web Servers
+Objects can be HTML files, Jpg images, java applet, audio file, etc.
+Web page is addressed by a URL (protocol -> host name -> path name)
+
+HTTP stands for hypertext transfer protocol
+- Is an application layer protocol
+- Client/Server model
+Client requests, recieves, and displays web objects
+Server sends objects in response to requests
+
+HTTP uses TCP
+- Client initiates TCP connection to server port 80
+- Server accepts
+- HTTP messages exchanged between browser and web server
+- TCP connection closed
+
+HTTP is stateless, meaning no information is kept on the server's side about past client requests
+
+Persistent HTTP vs Non Persistent HTTP
+
+Non-persistent HTTP only sends one object per TCP connection at a time. To request multipule objects requires multipule connections
+
+Persistent HTTP leaves the TCP connection open after the server already sent the response. Usually the TCP connection will close after a certain time. Minamilizes the amount of RTT's in a transaction between a client and server
+
+
+
+HTTP Request Messages, two types:
+Request - ASCII (human readable) consists of request line, header lines, carriage return
+Response - ASCII (human readable) consists of status line, header lines, data
+
+Maintaining user/server state: cookies
+Websites and client browsers use cookies to maintain some state between transactions
+Four components of cookies:
+- Cookie header line of HTTP response message
+- Cookie header line in next HTTP request message
+- Cookie file kept on user's host, managed by user's browser
+- Back end database at Web Site's server
+
+Web Caches (Proxy Servers)
+Satisfy client requests without involving origin server
+User configures browser to point to a web cache
+Browser sends all HTTP requests to cache
+If object is in the cache, cache returns object to the client, else cache requests object from origin server
+
