@@ -127,5 +127,50 @@ Online - done by agent between reciving stumli and acting
 
 
 
+Lec 3 The Agent Design Space:
 
+9 choices designers make when desiging intelligent agents:
+
+1. Modularity
+How is the agent organized internally?
+Flat - no decomposition
+Modular - seperate modules
+Hierarchical - modules recursivley decompose into each other (pyramid of modules)
+
+2. Planning Horizon
+How far ahead does the agent plan?
+Static - the world does not change
+Finite state planning - plans a fix # of steps
+Indefinite stage planning - plans a finite (non-predetermined) # of steps
+Infinite stage planning - plans are ongoing and repeated
+
+3. Representation
+How does the agent describe the world?
+Explicit - states of the world are enumerated
+Features - using variables with discrete values
+Indivudual and Relations - predicate logic
+
+4. Computational Limits
+Perfect Rationality - agent can always compute the best action
+Bounded rationality - agent must make good decisions regarding its limitations (time, memory, perceptual)
+
+5. Learning 
+Knowledge is given
+Knowledge is aqquired from data/past experience
+
+6. Uncertainty
+Sensing Uncertainty - Fully obserable world and partially observable
+Effect Uncertainty - Deterministic vs stochastic (subject to uncertainty) actions
+
+7. Preference 
+How are the goals described?
+Specific goal = complex preferences
+
+8. Number of Agents
+Single Agent vs Multipule Agents
+Adversarial or Cooperative?
+
+9. Interaction
+Offline - reason before acting 
+Online - reasoning while interacting with the environment
 
