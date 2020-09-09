@@ -427,3 +427,53 @@ User configures browser to point to a web cache
 Browser sends all HTTP requests to cache
 If object is in the cache, cache returns object to the client, else cache requests object from origin server
 
+
+
+Email
+
+Three Major Components:
+User agents - mail reader, composes edits and reads messages
+Mail Servers - contains incoming messages, messaging queue, and SMTP protocol
+Simple Mail Transfer Protocol
+
+SMPT
+Uses AT port 25
+Direct transfering between servers
+Three phases of transfer:
+- Handshaking, Transfer, Closure
+Command/response interaction is like HTTP
+
+HTTP PULL, SMTP PUSH
+Single part vs Multi part message
+8 bit vs 7 bit
+
+Mail Access Protocols:
+Internet Mail Access Protocol (IMAP) - provides retreival, deletion, and folders
+HTTP - Web based interface on top of SMTP, the IMAP deals with retrieving message info
+
+
+
+
+Domain Name System (DNS)
+
+Distributed database implemented in the hierarchy of many name servers
+Implememnted as application-layer protocol
+Hostname to IP address Translation
+Host Aliasing
+Mail Server Aliasing
+
+Why not centralize DNS?
+Single Point of Failure
+Traffic Volume
+Distant Centralized Database
+
+Cenrtalized doesn't scale well, comcast dns servers alone have 600B queries a day
+
+
+Hierarchial DNS Database
+Root DNS Servers -> Top level domain (split up by .com, .edu, etc) -> Authorative 
+
+Root Servers are an incredibley inportant internet function
+Also provide DNSSEC - provides security
+
+ICANN Internet Corporation for Assigned Names and Numbers manages root DNS domain
