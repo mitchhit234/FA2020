@@ -114,7 +114,7 @@ Primary Key - The designated candidate key used to identify tuples
 Unique Key - Candidate Key that is not a Primary Key
 
 
-Integirty Constraints
+Integrity Constraints
 
 Databases are only valid is it is in a state that satifies all rules of the Integrity Constrains
 
@@ -126,3 +126,19 @@ Given two relations that refer to each either, a Tuple in one relation must refe
 A set of attributes in R1 is a foregin key of R1 that references R2 if:
 - the domain of attributes in the forgeinkey is the same as the domain of the attributes in the Primary Key of R2
 - the values of FK in the tuple in R1 occurs as values of the PK for some tuple in R2
+
+
+
+9-9 Basic SQL
+
+Attribute Types:
+Numeric - INT, FLOAT, DECIMAL(precision,scale)
+Character - CHAR, VARCHAR2
+Bit String - 00101
+Boolen - TRUE, FALSE, UNKNOWN
+
+Date Types:
+TIME
+DATE
+TIMESTAMP
+
