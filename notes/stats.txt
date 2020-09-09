@@ -55,3 +55,29 @@ Factors - Type of ball and Shot Distance
 Randomization - used some sort of random number generator to decide the way/the order you conduct your experiment
 
 Replication - Each combination of factors will be performed mutlipule times to improve accuracy
+
+
+
+
+L3
+
+Summary Statistics:
+
+Measures of Central Tendency
+
+Mean - arthimetic average of data in a sample
+Population Mean - avergae value of all the observations in a population
+Sample Median - middle value of data when arranged in order. If the number of data points is even, median is the average of the two middle values
+Mode - most frequent value for data points (can be used for qualitative data as well)
+
+Measures of Variation/Spread
+
+Sample Variance - measured in square of original units. Summation of: a data point minus the mean, squared, divided by size of data points minus 1, for every data point
+
+Standard Deviation - positive square root of sample variance
+
+Sample range - maximum value minus minimum value
+
+Quartile - when an ordered set of data is divided into four equal parts, the divided points are called quartiles
+
+Interquartile range(IQR): Upper quartile minus lower quartile (upper quartile is at 75% highest, lower is 25% highest)
