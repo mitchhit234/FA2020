@@ -174,3 +174,74 @@ Adversarial or Cooperative?
 Offline - reason before acting 
 Online - reasoning while interacting with the environment
 
+
+
+
+Lec 4 Mathematical Preliminaries:
+
+Function: A mapping from a set A to a set B
+A = domain
+B = range
+
+EX: f: R -> R     f(x) = a + bx
+x is input, a and b are parameters
+
+Let f: A -> B
+
+Total - f is defined for every element of A
+Partial - there exists a in the set of A where f is undefined
+Surjection - every element of B is assigned to an element from A
+Injection - every element in A is assigned a unique element in B
+Bijection - a surjection and injection exists
+
+
+EX: X is a subset of A
+
+Image (of X) - the set of elements Y in the subset of B (range) assigned to the elements of X   f[X] = Y
+
+Inverse Image - the set of inputs X assigned to a set of outputs Y
+F^-1[Y] = X
+
+
+A monotone function is when x<y then f(x) < f(y), or if x>y, then f(x) > f(y)
+
+A continuous function is a function with no gaps
+
+A limit is a value that a function's output approaches but never reaches
+
+F is continuous at a point if and only if:
+- f(a) is defined
+- lim f(x) as x -> a exits
+- lim f(x) as x-> a - f(a)
+
+
+
+Differentiaton
+
+The derivative of f(x) at point x_1 is the slope of f(x) at point x_1
+f'(x) = df/dx = dy/dx
+
+
+Vectors
+
+Scalar - a single value
+
+n-Vector - a sequence of n scalars
+EX: x (x_1, x_2, x_3... x_n)
+x_i are the components of x
+
+Scalar : point in a line
+2-vector : point in 2D space
+3-vector : point in 3D space
+
+The basic vectors:
+e_1 = (1,0,0)
+e_2 = (0,1,0)
+e_3 = (0,0,1)
+
+s_1e_1 + s_2e_2 + s_3e_3
+
+The dot product has a scalar answer
+
+Two vectors are orthogonal if the dot product between the vectors is 0
+
