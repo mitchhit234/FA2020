@@ -142,3 +142,8 @@ TIME
 DATE
 TIMESTAMP
 
+
+
+9-11
+
+Everyone different database backend has different techniques for accessing/manipulating data
