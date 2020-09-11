@@ -477,3 +477,9 @@ Root Servers are an incredibley inportant internet function
 Also provide DNSSEC - provides security
 
 ICANN Internet Corporation for Assigned Names and Numbers manages root DNS domain
+
+Iterative queries are considered best practice for DNS queries
+SMTP uses TCP
+DNS uses TCP and UDP
+
+
