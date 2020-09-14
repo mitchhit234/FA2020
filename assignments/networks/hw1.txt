@@ -1,0 +1,35 @@
+1. 
+It takes 10 ms for this packet to propagate. It takes a packet d/s to propagate a link. Propagation delay does not rely upon packet length or transmission rate, both those variables determine transmission delay.
+
+2. 
+a. throughput = 500kbps
+b. file transfer time is 64 seconds
+c. throughput = 100kbps, and file transfer time is 320 seconds
+
+3. 
+The network architecture is the framework for a network's physical components, configuration, functionality, principles, procedures, and communication protocols used.
+The application architecture is the design that dictates how the application is structured over various different end systems, using the network to complete that design.
+
+4. 
+The server is the always on host that listens for and services requests from other hosts called clients. The client(s) send request(s) to the server in order to recieve information located on the server. 
+
+5.  
+For a faster transcation, you would use UDP over TCP because UDP is a lightweight transport protocol compared to TCP that has less time consuming tasks such as no handshaking. 
+
+
+6.
+	1. Maximum number of users, N_cs, that can be supported in the circuit switching scenario is five users
+
+	2. No, circuit switching would not be able to support 9 simultaneous users
+
+	3. If packet switching is used, the probability that one user is transmitting and the rest are not is equal to p(1-p)^(N_ps - 1), with p = 0.2 and N_ps equal to the amount of users sharing the link. For all but one user to not be transmitting data, you take the probability that one user is not transmitting (1-p, p being the probability that a user is transmitting), and take that to the power of the number of users in question. Then, for the specific user who is transmitting, you multiply the previous value by p, to get your final answer. The question did not specify, but if we have N_ps = 9 users like the last problem, then the numerical answer is 0.034
+
+	4. The probability that one and only one of the users is transmitting, but it can be any of the users, is the former equation multiplied by the number of users in the link
+	N_ps x p(1-p)^(N_ps-1) 
+	If N_ps = 9 and p = 0.2, then the numerical probability is equal to 0.27
+
+	5. 1/5 of the link capacity will be used if the user requires a 20Mbps transmission rate when transmitting (20Mbps divided by the 100Mbps link)
+
+	6. The probabilty that any 6 of the 9 users are transmitting, and the remainder are not, is _6C_9 x p^6(1-p)^3, with p = 0.2 and _6C_9 representing the binomial distribution for a total number of choices, 9, and number of choices we want, 6. Our final numerical answer for the total probability is 0.0028
+
+	7. Assuming there are 9 users total like in the previous problems, the probability that more than 5 users are transmitting is the sum of the probbilites for 6, 7, 8, and 9 users transmitting. Using the equation in the last problem and replacing the number of choices we want accordingly, the numerical probability that more than 5 users are transmitting is 0.0031
