@@ -483,3 +483,14 @@ SMTP uses TCP
 DNS uses TCP and UDP
 
 
+9-14
+
+Chapter 3 Transport Layer
+
+Sender breaks application messages into segements, passes it down to network layer. When the receiver gets it, reassembles segments and passes it to its application layer
+
+Network layer provides logical communication between hosts
+
+Transport layer provides logical communication between processes
+
+

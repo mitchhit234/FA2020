@@ -34,7 +34,6 @@ With an application server, you can store logic that is requested by different t
 
 
 
-
 8-31
 
 Phases of Design
@@ -43,7 +42,6 @@ Miniworld: What in the real world are we trying to represent with our data?
 
 Requirements Collection and Analysis:
 Database Requirements and Functional (App) Requirements
-
 
 
 
@@ -145,5 +143,6 @@ TIMESTAMP
 
 
 9-11
+
 
 Everyone different database backend has different techniques for accessing/manipulating data
