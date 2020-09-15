@@ -2,10 +2,13 @@
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{extsizes}
+\usepackage{titling}
 \usepackage[shortlabels]{enumitem}
 \usepackage[margin=1in]{geometry}
 
+\setlength{\droptitle}{-5em} 
 
 \title{Computer Networks HW1}
 \author{Mitchell Meier}
@@ -58,18 +61,22 @@ If $N_{ps} = 9$ and $p = 0.2$, then the numerical probability is equal to 0.27
 $\frac{1}{5}$ of the link capacity will be used if the user requires a 20Mbps transmission rate when transmitting (20Mbps divided by the 100Mbps link)
 
 \item
-The probabilty that any 6 of the 9 users are transmitting, and the remainder are not, is $_6C_9 \times p^6(1-p)^3$, with $p = 0.2$ and $_6C_9$ representing the binomial distribution for a total number of choices, 9, and number of choices we want, 6. Our final numerical answer for the total probability is 0.0028
+The probabilty that any 6 of the 9 users are transmitting, and the remainder are not, is $_6C_9 \times p^6(1-p)^3$, with $p = 0.2$ and $_6C_9$ representing the binomial distribution for a total number of choices, 9, and number of choices we want, 6 
+
+$$_6C_9 = \binom{9}{6} = \frac{9!}{6!(9-6)!}$$
+
+Our final numerical answer for the total probability is 0.0028
 
 \item
-Assuming there are 9 users total like in the previous problems, the probability that more than 5 users are transmitting is the sum of the probbilites for 6, 7, 8, and 9 users transmitting. Using the equation in the last problem and replacing the number of choices we want accordingly, the numerical probability that more than 5 users are transmitting is 0.0031
+Assuming there are 9 users total like in the previous problems, the probability that more than 5 users are transmitting is the sum of the probabilites for 6, 7, 8, and 9 users transmitting
+
+$$\sum_{i=6}^{9} \prescript{}{i}C_9 \times p^i(1-p)^{n-i}$$
+
+Using the equation in the last problem and replacing the number of choices we want accordingly, the numerical probability that more than 5 users are transmitting is 0.0031
 
 
 \end{enumerate}
 
-
-
 \end{enumerate}
-
-
 
 \end{document}
