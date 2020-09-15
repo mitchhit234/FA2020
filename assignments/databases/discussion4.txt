@@ -1,0 +1,10 @@
+The Database Application I looked into was Google's Cloud Gaming Infrastructure. 
+
+In the diagram, the clients listed under user interface can connect to the google cloud application servers (Frontend), where the platform services and game host servers exist. 
+
+Platform services provide specified interfaces to the client based on their personal device type, and communicates with the game host servers to place clients in a specific "room" (playing with friends, type of matchmaking, etc.). The game host servers provide the game logic and can also communicate directly with clients for low-latency gameplay.
+
+Both these types of servers also communicate with the Backend, which consists of the database management system and the analytics stack (meta data for the DBMS). These servers only communicate with the application servers and do not communicate directly with the clients. However, they provide important information that is crucial to the client's experience, such as game state data, logged data, and other analytics. So the application server takes that information from the DBMS and is responsible for deleviring it to the client in a way that specific client can understand.  
+
+This application architecture can be described ats a 3-Tier architecture, since it contains an application layer between the client and DBMS that helps communicate the user's requests and sends DBMS information to the user. The application layer in this scenario also processes functional logic and runs many cruical tasks that could be considered the base of the entire infrastructure.
+
