@@ -146,3 +146,53 @@ TIMESTAMP
 
 
 Everyone different database backend has different techniques for accessing/manipulating data
+
+
+9-16
+
+Two different ways to look at operations:
+Formal - relational algebra
+Informal - SQL
+
+Example: Select
+
+lowercase sigma <selection condition>(R) for relational algebra
+
+<selection condition> = <attribute name><comparission operator><value/attr name> for SQL
+
+
+Projection: reducing the attributes to a subset of R
+
+pi<attribute name>(R) for relational algebra
+
+SELECT <attribute name(s)> FROM (R)
+
+
+Rename/aliasing
+
+roe(B1,B2,...B_n)(R) 
+
+SELECT A_1 as B_1 FROM R as Q
+
+
+Union, Intersection, and Minus
+
+R(A_1, A_2, ...A_n) and Q(B_1, B_2, ...B_n)
+must be type compatible, must have the same degree and dom(A_i) = dom(B_i)
+
+SELECT * FROM R 
+UNION/INTERSECT/MINUS
+SELECT * FROM Q
+
+
+Cartesian Product
+
+Q X R
+
+SELECT * FROM R CROSS JOIN Q
+Combine each tuple in R by each one in Q, so that theres Rtuples X Qtuples total tuples
+
+
+JOIN 
+
+Combining related tuples from TWO relations into a single relation
