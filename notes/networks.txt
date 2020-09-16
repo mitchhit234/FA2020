@@ -494,3 +494,23 @@ Network layer provides logical communication between hosts
 Transport layer provides logical communication between processes
 
 
+9-16
+
+When UDP clients send UDP segments to the same destination port number at a reciving host, those segments will always be directed to the same socket as the reciving host
+However, this is not true for TCP clients. they can direct segments to different sockets
+
+It is possible for two TCP segments with source port 80 to be sent by different processes at the ending host
+This is not possible for UDP segments
+
+Why is there UDP?
+No connection establishment (No extra RTT delay)
+No connection state at sender, reciever (simple and cheap)
+Small header size (less bandwith needed)
+No congestion control (no speed limit)
+
+UDP is used in:
+Streaming Multimedia (loss tolerant, rate sensitive)
+DNS Name Queries for fastest service
+SNMP
+
+To make UDP reliable, add reliability at the application layer like QUIC, and add cogestion control at the application layer
