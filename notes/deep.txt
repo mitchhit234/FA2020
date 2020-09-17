@@ -271,3 +271,42 @@ An orthogonal matrix is a square matrix where A x A^T - A^T x A = I_n
 
 Function Minimization:
 Given f(x), find value c where f(x) is minmized 
+
+
+
+Lec 6 Machine Learning
+
+Learning's definition here is the ability to improve one's behavior with experience
+Improved through range of actions, accuracy of tasks, and speed of processes
+
+Three components of a machine learning problem:
+- Data is the experiences from which the agent is going to learn (aqquired at setup or during runtime)
+- Task is the action that we are trying to improve 
+- Measure of improvement (the three improvement categories listed above)
+
+
+Common Machine Learning Tasks:
+Supervised Learning - learn from example inputs and outputs
+Unsupervised Learning - find groupsing from example data
+Reinforcement Learning - find what to do based on rewards and punishment
+Analytic Learning - find ways of reasoning faster using experience
+Inductive Logic Programming - build rich models in terms of logic programs
+Statistical Relational Learning - learn relational representations of the data
+
+
+When is feedback given?
+Supervised Learning - after every example
+Unsupervised Learing - no feedback
+Reinforcement Learning - after a sequence of actions
+
+Online vs Offline learning, when offline examples are avaliable to the agent before acting, as where online learning is when the examples arrive as the agent is acting
+
+
+Measuring Success
+Success is measure on the task not the data (output, not the input)
+Example data drives the search
+There can be noise in data, missing examples/misclassified
+
+
+Bias 
+A tendency to prefer one model over another
