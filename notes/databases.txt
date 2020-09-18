@@ -196,3 +196,15 @@ Combine each tuple in R by each one in Q, so that theres Rtuples X Qtuples total
 JOIN 
 
 Combining related tuples from TWO relations into a single relation
+Tuples with a NULL value for a join condition attribute are dropped
+
+Join selectivity helps evaluate how much a paticular operation will cut down your amount of tuples to your desired tuples
+
+Inner Join - tuples with no match are eliminated
+Outer Join - tuples with no match are not eliminated
+
+Right Outer Join - tuples with no match on the right are not eliminiated
+Left Outer Join - tuples with no match on the left are not eliminiated
+Full Outer Join - tuples with no match on both sides are not eliminated
+
+Outer Union - union between two relations that are not union compatible
