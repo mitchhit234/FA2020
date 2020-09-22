@@ -310,3 +310,31 @@ There can be noise in data, missing examples/misclassified
 
 Bias 
 A tendency to prefer one model over another
+
+
+
+Lec 7 Supervised Learning:
+
+Data is represented as a collection of examples, E
+Each collection contains inputs and outputs
+
+Given the input vector of E, predict the output (given ->x predict ->y)
+Regression output is when its a continuous value
+Classification output is when its a boolen value (yes or no)
+
+Measuring Error
+Absoulte Error (L_1 error) - sum over every example of the absolute difference between the expect output minus the output of our learner
+Sum-OfSquare (L_2)^2 - absolute error squared
+Worst-Case-Error (L_infinity) - max(absolute error (of a single value, not sum like absolute error)) 
+Error Count (L_0) - # of times expected output is different from learner output
+
+Data Noise - includes mesuaring errors, incomplete/wrong data, meaning it can not be fully relied upon
+Overfitting - the learner specalizes on details of the training data
+
+Simple model will have more errors but will be easier to learn
+Complex modeel will have less error, be harder to learn, and tend to overfit
+
+Data can be seperated into a training set and testing set
+Training set (usually 10% of testing set) is used to train the learner
+Then, the learner is evaluated against the testing set
+This stratergy helps identify overfitting
