@@ -81,3 +81,67 @@ Sample range - maximum value minus minimum value
 Quartile - when an ordered set of data is divided into four equal parts, the divided points are called quartiles
 
 Interquartile range(IQR): Upper quartile minus lower quartile (upper quartile is at 75% highest, lower is 25% highest)
+
+
+
+
+Exam 1 Review
+
+Variability:
+Natural Variability is the fact that no two individuals are identical
+Sampling Variability is the fact that results from any two samples are not identical
+
+IVPPSS:
+I - Individual - an item of interest in the study
+V - Variable - characteristic recorded about individual
+P - Population - all individuals of interst
+P - Parameter - summary of variables in population
+S - Sample - subset of the population being surveyed
+S - Statistic - summary of variables in a sample
+
+Types Of Data:
+Quanitative - Continous and Discrete
+Qualitative - Ordinal and Nominal
+
+Sampling Methods:
+Retrospective Study - uses sample of a historical process data archived over time
+Observational Study - passivley observe individuals, measure variables of interst. no intent on influcing the outcome
+Designed Experiment - activley impose some treatment on individuals in order to observe responses
+
+Designed Experiments:
+Factors - inputs to a process (control variables of an experiment)
+Treatments - levels of the factors
+Treatment Combinations - total number of possible combinations for factors and treatments
+Response Variable - outcomes observed in the experiment 
+Replication - a repeat run of a specific treatment combination, help measure experimental random error
+Randimization - allocation of experimental material and order in which specifc runs are performed are randomly determined
+
+Summary Statistics:
+Sample Mean - numerical average of observations in a sample
+Population Mean - numerical average of observations in a population
+Sample Median - middle value when data is ordered, if observations is even, median is average of the two middle values
+Sample Variance - variability of the data 
+Sample Standard Deviation - square root of the sample variance
+Sample Range - maximum value minus minimum value
+Quartile - division points of the data set, lowest quartile Q1 is the value that has approx 25% of values below it, Q2 50%, Q3 75%
+Interquartile Range (IQR) - Q3 minus Q1 (upper minus lower)
+
+Sets:
+Sample Space(s) - set of all possible outcomes of an experiment
+Event - Subset of the sample space(s) of a random experiment
+Compliment - a compliment of A would be the set of all outcomes that are not in A (A^c)
+Mutually Exclusive - sets that have no outcomes in common (A intersection B = empty)
+
+Probability:
+Given any random experiment/event A, P(A) is the probabilty that A occurs, measured as the proportion of times that event A would occur in the long run, if the experiment were to be repeated over and over again
+Axioms in written notes
+
+Conditional Probability and Independence:
+Unconditional Probability - probability based on the entire sample space
+Conditional Probability - probability of one event occurring with some relationship to other events, based on a part of the sample space, may have certain restrictions
+Independent Events - two events are independet if one has no influence on the other
+
+Mutually Exclusive Events are events where the occurunce of one event automatically rules out the occurence of the other (EX: getting tails on a flip means you cant get heads)
+Independent Events are the opposite of mutually exclusive 
+
+Multiplication Rule:
