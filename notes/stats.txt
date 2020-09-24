@@ -145,3 +145,18 @@ Mutually Exclusive Events are events where the occurunce of one event automatica
 Independent Events are the opposite of mutually exclusive 
 
 Multiplication Rule:
+See handwritten notes
+A set of events are exhaustive if their union covers the entire sample space
+
+The Law of total Probability
+See handrwitten notes
+
+Bayes Rule
+Provides a formula that allows us to calculate one of the conditional probabilities if we know the other one
+
+Random Variable:
+A fuinction which assigns a numerical value to each outcome in a sample space. Typically denoted by capital letters. Discrete or Continuous
+The distribution of a random variable consits of the set of all possible values of X (domain), and a function that describes how to assign probabilites to events involving X
+
+Probability Mass Function (pmf):
+See handwritten notes (and for cumulative distribution function cdf)
