@@ -159,4 +159,4 @@ A fuinction which assigns a numerical value to each outcome in a sample space. T
 The distribution of a random variable consits of the set of all possible values of X (domain), and a function that describes how to assign probabilites to events involving X
 
 Probability Mass Function (pmf):
-See handwritten notes (and for cumulative distribution function cdf)
+See handwritten notes (and for cumulative distribution function cdfls)
