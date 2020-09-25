@@ -220,3 +220,16 @@ Design Guidelines:
 - Reduced Redundancy
 - Reduced NULL values
 - Disallow possible generation of spurious tuples
+
+
+Normalization is the process of analyzing given relations of a schema, functional dependicies, and primary keys to achieve desirable properties of minimizing redundancy, and minimizing insertion, modification, and deletion anomlities
+
+Denormalization is the process of storing the join of normal form relations as a base relation which is in a lower normal form
+
+
+1NF has single atomic values, eliminate multivalued attributes, composite attributes, and nested relations
+Still subject to insertion, deletion, and modification anomalies
+
+An attribute if relation schema R is a primary attribute of R if it is a member of a candidate key of R
+
+2NF is a 1NF where every non-prime attribute A in R is fully functionally dependent on the primary key of R. This removes any partial functional dependices
