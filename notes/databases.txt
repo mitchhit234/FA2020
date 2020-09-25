@@ -208,3 +208,15 @@ Left Outer Join - tuples with no match on the left are not eliminiated
 Full Outer Join - tuples with no match on both sides are not eliminated
 
 Outer Union - union between two relations that are not union compatible
+
+
+Normalization helps out with the design of a database
+
+Bottom Up design: start with attributes, consider relations between them
+Top Down design: start grouping attributes by natural relation then decompose the relations
+
+Design Guidelines:
+- Clear Semantics of attributes and schemas
+- Reduced Redundancy
+- Reduced NULL values
+- Disallow possible generation of spurious tuples
