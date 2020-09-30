@@ -233,3 +233,29 @@ Still subject to insertion, deletion, and modification anomalies
 An attribute if relation schema R is a primary attribute of R if it is a member of a candidate key of R
 
 2NF is a 1NF where every non-prime attribute A in R is fully functionally dependent on the primary key of R. This removes any partial functional dependices
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Scanner breeaks the test into SQL keywords, attribute names, and relation names
+Parser checks query syntax to determine whether query is formatted correctly
+Validated checks that all attribute and relation names are valid and semantically meaningful in the context of the database
