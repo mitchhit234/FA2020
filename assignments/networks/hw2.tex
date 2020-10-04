@@ -1,0 +1,61 @@
+\documentclass[14pt]{article}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{extsizes}
+\usepackage{titling}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage[margin=0.75in]{geometry}
+
+\newcommand{\bd}{\textbf}
+
+\setlength{\droptitle}{-5em} 
+
+\title{Computer Networks HW2}
+\author{Mitchell Meier}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+\item
+\begin{enumerate}[(1)]
+\item
+The minimum time needed to distribute this file from a server to all clients in a client-server model is $D_{cs}$  
+
+\[D_{cs} = max(\frac{NF}{u_s},\frac{F}{d_{min}})\]
+
+With $N$ equal to the number of clients (7), $F$ is equal to the file size (4 Gigabits), $u_s$ is equal to the upload rate of the server (94 Megabits per second), and $d_{min}$ is equal to the lowest download rate out of all clients ($c_1$ in this case, 15 Megabits per second). Using these numerical values, the solution to $D_{cs}$ can be simplified to
+
+\[D_{cs} = max(297.87,266.67)\]
+
+Which means the minimum time needed to distrubute F to all clients will be 297.87 seconds \\
+
+\item
+The server, s, is the cause for the final minimum time. The server is guaranteed to take longer to upload the file F to each individual client than the slowest client is to download that file \\
+
+\item
+The minimum time needed to distribute this file from a server to all clients in a peer to peer model is $D_{P2P}$
+
+\[D_{P2P} = max(\frac{F}{u_s},\frac{F}{d_{min}},\frac{NF}{u_s + \sum\limits_{i=1}^{N} u_i})\] 
+
+With $N$ equal to the number of clients (7), $F$ is equal to the file size (4 Gigabits), $u_s$ is equal to the upload rate of the server (94 Megabits per second), $d_{min}$ is equal to the lowest download rate out of all clients ($c_1$ in this case, 15 Megabits per second), and $\sum_{i=1}^{N} u_i$ is equal to the combined upload bandwith of all clients in the system (135 Megabits per seond). Using these numerical values, the solution to $D_{P2P}$ can be simplified to 
+
+\[D_{P2P} = max(42.55,266.67,122.27)\] 
+
+Which means the minimum time needed to distrubute F to all clients will be 266.67 seconds \\
+
+\item
+The client, $c_1$, is the cause for the final minimum time. The client is guaranteed (assuming all clients are utilizing their full upload speed) to take longer to download the file F than it will take the other clients to upload/share the file with each other \\
+\end{enumerate}
+
+\item
+\end{enumerate}
+
+\end{document}
