@@ -338,3 +338,47 @@ Data can be seperated into a training set and testing set
 Training set (usually 10% of testing set) is used to train the learner
 Then, the learner is evaluated against the testing set
 This stratergy helps identify overfitting
+
+
+
+
+Linear Regression
+
+The data is a set E of examples em where e = x_1, x_2, ..... x_n or the vector x
+we hope to find the values of x_i, y for examples e
+predict y from the vector x
+
+Model: Linear Regression
+yhat(e) = b + w_1x_1(e) + w_2x_2(e) ... w_nx_n(e), w being out weight variables
+
+find w_1 ... w_n that minimizes Error(E,w)
+Use Gradient Descent (equation in slides)
+Initalize the w's randomly
+Compute for each weight its measurement of error
+Update each w by its associated error
+Repeat until a specfied stopping condition is reached
+
+Incremental Gradient Descent
+update a w after each example
+approaches solution faster, does not converge
+
+Stochastic Gradient Descent
+chooses examples at random
+
+Batched Gradient Descent
+update w after some number of examples (number can be changed as well)
+
+
+
+
+Classification
+
+Squashing Functions
+
+Step Function
+1 if x > 0, otherwise 0
+
+Sigmoid (logistic) Function
+1/(1+e^(-x))
+
+
