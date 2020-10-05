@@ -236,26 +236,28 @@ An attribute if relation schema R is a primary attribute of R if it is a member 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Scanner breeaks the test into SQL keywords, attribute names, and relation names
 Parser checks query syntax to determine whether query is formatted correctly
 Validated checks that all attribute and relation names are valid and semantically meaningful in the context of the database
+
+
+
+SQL Is a functional programming language, you tell it to do something and it does that process in whatever way is fastest
+
+SQL queries are broken into query blocks then translated into relational algebra
+
+
+Project, Select, Rename have unary operators
+Union, Intersect, Difference, Joins are Binary
+
+
+End of Material for Exam 1 (beggining to query blocks 5.1)
+
+
+
+
+
+
+
+Indexes
+
