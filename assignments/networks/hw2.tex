@@ -56,7 +56,31 @@ The client, $c_1$, is the cause for the final minimum time. The client is guaran
 \end{enumerate}
 
 \item
+Yes, it is possible for an application to utilize reliable data transfer even while not using TCP. An application developer can use UDP and then implement reliable data transfer into the application layer. A developer may do this to avoid some of TCP's built in features, such as congestion control \\
 
+\item
+
+
+\item
+Sequence numbers help the reciever categorize arriving packets and determine if they contain new or retransmitted data. Sequence numbers also support reordering and provide insight on potential dropped packets \\
+
+\item
+Timers help detect lost packets. By detecting if the ACK for a transmitted packet is not recieved within the time specified by the timer, the packet is projected to have been lost, and the packet is transmitted again \\
+
+\item
+\begin{enumerate}[(a)]
+\item
+False, Host B will still send acknowledgements to Host A
+
+\item
+False, rwnd is dynamic
+
+\item
+
+\item
+
+
+\end{enumerate}
 
 \end{enumerate}
 
