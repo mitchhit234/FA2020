@@ -518,3 +518,31 @@ To make UDP reliable, add reliability at the application layer like QUIC, and ad
 UDP Checksum's goal is to detect errors in a transmittited segment
 Sender treats contents of UDP segment as sequence of 16 bit integers
 Checksum addition of segment content, value put in checksum field
+
+
+
+
+Chapter 4 Network Layer
+
+Services and Protocols
+Sender rencapsulates segments into datagrams, passes to link layer
+Reciever delivers segments to transport layer
+
+In every internet device, there are hosts and routers
+
+Two Key Network Layer Functions
+Forwarding: Move packets from a router's input link to appropriate router output link
+Routing: Determine the route taken by packets from source to destinations (Routing algorithms)
+
+The data (local) plane determines how a datagram arriving on router input port is forwarded to router output port
+The control (network wide) plane determines how a datagram is routed among routers along end to end paths from source to destination
+
+
+Software Defined Networking (SDN) control plane connects routers and forwards important routing information
+
+Network Layer Service Model
+Internet has a best effort service model, no QoS guarantees
+
+Simplicity of mechanisim has allowed internet to be widely adopted
+Sufficent provisioning of bandwith allows performance of real time application to be good enough most of the time
+Replicated application layer distributed services connecting close to clients networks allow services to be provided from many locations
