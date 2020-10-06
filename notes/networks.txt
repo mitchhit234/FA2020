@@ -518,3 +518,99 @@ To make UDP reliable, add reliability at the application layer like QUIC, and ad
 UDP Checksum's goal is to detect errors in a transmittited segment
 Sender treats contents of UDP segment as sequence of 16 bit integers
 Checksum addition of segment content, value put in checksum field
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Book Notes Chapter 3: Transport Layer
+
+Transport Layer provides logical communication between application processes running on different hosts
+Network Layer provides logical communication between hosts
+Extending the network layers communication from hosts to processes on those hosts is called transport layer multiplexing and demultiplexing
+
+Transport Layer is only implemented in end systems
+
+The internet's Transport Protocols are UDP (User Datagram Protocol) and TCP (Transmission Control Protocol)
+UDP provides an unreliable, connectionless service to the application layer
+TCP provides a reliable, connection oriented service to the application layer
+
+Transport Layer packets are called segments, Network Layer packets are called datagrams
+
+The Internet's Network Protocol is called IP (Internet Protocol)
+IP provides logical communication between hosts with a best-effort delivery service model (meaning it is unreliable)
+TCP's reliable service is an example of a service a transport layer protocol can provide that a network layer protocol doesnt already
+
+
+UDP provides:
+Multiplexing/Demultiplexing
+Intergrity Checks
+
+TCP provides:
+Multiplexing/Demultiplexing
+Intergrity Checks
+Reliable Data Transfer (making sure all data is delivered and in order):
+	- Flow Control
+	- Sequence Numbers
+	- Acknowledgements
+	- Timers
+Congestion Control
+
+
+Multiplexing and Demultiplexing:
+
+Transport Layer Packet will contain a source port # and dest port # (each 16 bits) to direct network packets to the correct port
+Port numbers ranging from 0 to 1023 are called well known port numbers and are restricted, meaning they are reserved for well known protocols
+EX: HTTP uses port 80, FTP uses port 21
+http://www.iana.org [RFC 3232]
+
+UDP Segment includes source port and destination port, TCP includes this information plus source IP and destination IP
+
+Two arriving TCP segments with different source IP addresses or source port numbers will be directed to two different sockets, unlike UDP
+EX: Host A and Host B both send a segment to port 80 on Host (Server) C. Transport Layer demultiplexing allows these segments to be sent to unique sockets, while UDP would not
+Super useful in cases like web servers, where every client is sending HTTP requests to server port 80
+
+
+Connectionless Transport: UDP
+
+Reasons one might choose to use UDP instead of TCP:
+Bypass congestion control, resulting in quicker sending of segments
+Can sacrafice data loss for less delays (TCP continues to send over and over until reliable delivery is achieved)
+No handshaking like in TCP, resulting in less delay (biggest reason DNS uses UDP)
+Reliable data transfer can be acheived in the application level (EX: Google Chrome's QUIC protocol)
+No connection state variables required, reducing delay and segment size
+Smaller packet header overhead, TCP has 20 bytes while UDP only has 8
+
+Realtime applications in general do not respond to TCP well due to the above reasons
+
+Examples of some popular internet applications and what they use:
+
+Email 					SMTP 					TCP
+Remote Terminal Access 	Telnet					TCP
+Web 					HTTP 					TCP
+File Transfer 			FTP 					TCP
+Remote File Server 		NFS						UDP (usually)
+Multimedia 				proprietary (usually)	UDP, sometimes 	TCP
+Internet Telephony 		propreitary (usually) 	UDP, sometimes 	TCP
+Network Management 		SNMP 					Typically 		UDP
+Name Translation 		DNS 					Typically 		UDP
+
+
+
+
+
+
