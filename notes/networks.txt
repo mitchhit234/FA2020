@@ -520,9 +520,6 @@ Sender treats contents of UDP segment as sequence of 16 bit integers
 Checksum addition of segment content, value put in checksum field
 
 
-
-
-<<<<<<< HEAD
 Chapter 4 Network Layer
 
 Services and Protocols
@@ -547,16 +544,6 @@ Internet has a best effort service model, no QoS guarantees
 Simplicity of mechanisim has allowed internet to be widely adopted
 Sufficent provisioning of bandwith allows performance of real time application to be good enough most of the time
 Replicated application layer distributed services connecting close to clients networks allow services to be provided from many locations
-=======
-
-
-
-
-
-
-
-
-
 
 
 
@@ -635,9 +622,3 @@ Internet Telephony 		propreitary (usually) 	UDP, sometimes 	TCP
 Network Management 		SNMP 					Typically 		UDP
 Name Translation 		DNS 					Typically 		UDP
 
-
-
-
-
-
->>>>>>> cca050dc76041244b83e305a8666731f00b6eac3
