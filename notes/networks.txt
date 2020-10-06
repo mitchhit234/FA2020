@@ -622,3 +622,96 @@ Internet Telephony 		propreitary (usually) 	UDP, sometimes 	TCP
 Network Management 		SNMP 					Typically 		UDP
 Name Translation 		DNS 					Typically 		UDP
 
+
+Principles of Reliable Data Transfer
+
+In a reliable data transfer, no data bits are corrupted, lost, or delivered out of order. TCP is an example of a reliable data transfer protocol
+
+Types of RDT protocols:
+
+rdt1.0 - Reliable data transfer over a perfecty reliable channel
+
+rdt2.0 - Reliable data transfer over a channel with bit errors
+Uses error detection (via checksums for rdt2.0)
+Reciever Feedback via positive acknowledgement (ACK) or negative acknowledgement (NAK), "OK" or "Please repeat that" represented as 0 and 1
+Retransmission by sender if it recieves an NAK from the reciever (1)
+
+Reliable data transfer protocols based on transmission are called ARQ (Automatic Repeat reQuest) protocols
+Since rdt2.0 sender stops and waits for a reciever response, it is called a stop and wait protocol. During that stopping period it can't even get information from its own application layer
+
+rdt2.0 has a fatal flaw, where is can not handle the errors that could occur if the reciever's acknowledgement packet got corrupted. However rdt2.1 fixes that (but still assumes all packets are not lost)
+
+rdt2.1 - Reliable data transfer over a channel with bit errors (bidirectional)
+New data field added to segments called the sequence number
+Receiver checks sequence number to see if it is a new transmission or old transmission. With this info, it knows what the sender recieved as its acknowledgement
+Reciever will still send a negative acknowledgement for a corrupted packet, however, for an out of order packet, it will send a positive acknowledgement
+A sender that recieves dupliate ACKs of the same package will know that the reciever did not recieve the packet they sent after that original ACK
+
+rdt 2.2 - Reliable data transfer over a channel with bit errors (bidirectional)
+Reciever now also includes a reciever number in its acknowledgement packets
+No longer requires use for NAK. Just send an ACK and the sequence number
+
+rdt3.0 - Reliable data transfer over a channel with bit errors and possible loss bits (bidirectional)
+Can be implemented in many ways, in rdt3.0, it is the sender's responsibility
+Sender uses its own judgement to choose a time where it will resend a segment if it has not recieved an ACK
+This implementation requires a countdown timer that can interrupt a sender after a period of time has elapsed
+Sender starts timer for each packet, responds to any timer interrupts, and stops the timer appropriatley 
+Rdt3.0 also known as the alternating bit protocol (pg 246 for good diagram)
+
+
+Rdt3.0 is a functionally correct protocol, however, since its a stop and wait protocol, most of today's high speed networks would not be satisfied with its performance
+The utilization of the sender is very low, since it stops and waits between the time it sends its last byte, and the time it recevies an acknowledgement (or timeout). Between then, the propigation delay, process of the reciever, any buffers/delays, and propigation delay back (acknowledgement transmission rate is negligeble) all take place and take up a majority of the time
+
+Pipeling helps this problem, allowing the sender to send multipule packets in a row before it ever gets an acknowledgement back from the reciever
+Pipelining has some consequences though, such as:
+Range of sequence numbers must be increased 
+Sender/reciever may have to buffer more than one packet
+
+
+Go Back N protocol (GBN):
+Sender is allowed to transmit multipule packets before receiving acknowledgements
+Restrained to a size of N packets for reasons tied to congestion control
+Sequence numbers in a GBN fall into four categories:
+Already ACK'd [0-base-1]
+Sent but not ACK'd [base-nextseqnum-1]
+Usable but not sent [nextseqnum, base+N-1]
+Not useable [base+N or greater]
+
+N is refered to as the window size and the GBN protocol itself is called a sliding window protocol
+
+GBN uses cumulative acknowledgements, meaning that if the sender recieves an ACK for the segment with sequence number x, it can assume all segments with sequence numbers less than x have also been recieved. This is because the sender always sends one packet at a time, and the reciever will always just send an ACK for its last successful packet recieved if there is an error (and discards error filled packet, even if its just delivered out of order)
+
+
+
+Selective Repeat (SR):
+
+A downside to GBN is that a single segment error can result in many segments having to be redelievred (if the window size and bandwith delay is very high)
+SR helps mitigate this, by having the sender retransmit only those specific segments that have errors
+
+Differences between SR and GBN:
+SR has logical timers for each individual packet, unline GBN, which just had a timer for its last non-acknowledged packet
+If an ACK is recieved in SR, and the sequence number is equal to the current base of the window, the window base is moved forward to the unacknowledged packet with the smallest sequence number
+Receiver side will only send packets up to its application layer for up to the lowest unacknowledged sequence number (EX: receiving 3, 4, 5, then 2, it will send once 2 comes in in the order 2 3 4 5)
+SR reciever must also send an ACK to the sender even if it falls before the base of the current reciever window (pg 257 for good diagram)
+SR protocol must have a windows size that is less than or equal to half of the range of sequence numbers (258)
+
+One last note on the assumption of in order data delievery, sequence numbers must not only be used, but be used correctly in order to assure in order data delivery. This involves an assumption made about a packet's "lifetime" in the network (For example, TCP assumes a packet's maximum lifetime in a network is 3 minutes)
+
+Table 3.1 on pg 260 is a good recap for reliable data transfer terms
+
+
+
+
+
+
+Connection Oriented Transport (TCP):
+
+
+
+
+
+
+
+
+
+
