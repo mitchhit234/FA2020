@@ -59,7 +59,7 @@ The client, $c_1$, is the cause for the final minimum time. The client is guaran
 Yes, it is possible for an application to utilize reliable data transfer even while not using TCP. An application developer can use UDP and then implement reliable data transfer into the application layer. A developer may do this to avoid some of TCP's built in features, such as congestion control \\
 
 \item
-
+Each connection socket on the Web Server Host C is identified with a four tuple including source(client) IP address, source port number, destination port number, and destination IP address. Since the requests from A and B are distinguishable from each other since they have different source IP addresses, the web server will be able to designate each connection to a seperate socket (they still have the same port number however). This would not work with UDP however, since UDP does not include source IP address
 
 \item
 Sequence numbers help the reciever categorize arriving packets and determine if they contain new or retransmitted data. Sequence numbers also support reordering and provide insight on potential dropped packets \\
@@ -76,11 +76,54 @@ False, Host B will still send acknowledgements to Host A
 False, rwnd is dynamic
 
 \item
+True
 
 \item
+False, the sequence number depends on the bumber of 8 byte characters in the current segment
 
+\item
+True
 
 \end{enumerate}
+\item
+\begin{enumerate}[(1)]
+\item
+$0010000000111101$
+
+\item
+$1101111111000010$ 
+
+\end{enumerate}
+
+\item
+\begin{enumerate}[(1)]
+\item
+Segment's sequence number at $t=1$ is 118
+Segment's sequence number at $t=2$ is 764
+Segment's sequence number at $t=3$ is 1410
+Segment's sequence number at $t=4$ is 2056
+
+\item
+ACK's sequence number sent when $t=8$ is 764
+ACK's sequence number sent when $t=9$ is 1410
+ACK's sequence number sent when $t=10$ is 2056
+ACK's sequence number sent when $t=11$ is 'x'
+
+\end{enumerate}
+
+\item
+RTT propgation delay between hosts is 30ms (Double the given propgation delay) \\
+Transmission rate = $10^9 bps = R$ \\
+Size of data packet = $1500 * 8 = 12000 bits = L$ \\
+
+$D_{trans} = L/R$ \\
+$D_{trans} = 0.000012 s$ 
+
+$Channel Utilization = N * \frac{12micros}{12micros + RTT}$ \\
+$98/100 = N * \frac{12ms}{30.012ms}$ \\
+$N = 2450.98$
+
+For 98 percent utilization, window size should be approximately 2451 packets long
 
 \end{enumerate}
 
