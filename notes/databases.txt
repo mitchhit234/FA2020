@@ -234,9 +234,7 @@ An attribute if relation schema R is a primary attribute of R if it is a member 
 
 2NF is a 1NF where every non-prime attribute A in R is fully functionally dependent on the primary key of R. This removes any partial functional dependices
 
-<<<<<<< HEAD
 3NF is 2NF where transitive functional dependencies are removed
-=======
 
 
 Scanner breeaks the test into SQL keywords, attribute names, and relation names
@@ -254,14 +252,24 @@ Project, Select, Rename have unary operators
 Union, Intersect, Difference, Joins are Binary
 
 
+
+Anomalies:
+
+Getting rid of partial/transitive functional dependencies, and in turn anomolies, is as simple as getting into 4th normal form
+
+Update anomalie: Make it so you only have to change one value to redefine a attribute value (like switching painting to canvas in the homework), because you would have to change painting to homework in each tuple with the anomalie
+
+Deletion anomalie: You unintentionally remove information from the database by removing the last tuple that has that information in it (for example, removing someone from an office building who was the last person in that building, then deletes the building as well)
+(If you deleted the one value of tapestry, then you no longer know that tapestry is a media type)
+
+
+
+
 End of Material for Exam 1 (beggining to query blocks 5.1)
 
 
+Primary Index is an indexing of a key attribute of a physically ordered data file
 
+Clustering Index is an indexing of a non-key attribute of a physically stored data file
 
-
-
-
-Indexes
-
->>>>>>> a41845ef54387cc3acfe8f947d094d4fab488b54
+Secondary Index is an indexing of indexes of key or non-key attributes of physically ordered or non-orderd data file
