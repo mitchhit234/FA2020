@@ -234,34 +234,6 @@ An attribute if relation schema R is a primary attribute of R if it is a member 
 
 2NF is a 1NF where every non-prime attribute A in R is fully functionally dependent on the primary key of R. This removes any partial functional dependices
 
-<<<<<<< HEAD
 3NF is 2NF where transitive functional dependencies are removed
-=======
 
-
-Scanner breeaks the test into SQL keywords, attribute names, and relation names
-Parser checks query syntax to determine whether query is formatted correctly
-Validated checks that all attribute and relation names are valid and semantically meaningful in the context of the database
-
-
-
-SQL Is a functional programming language, you tell it to do something and it does that process in whatever way is fastest
-
-SQL queries are broken into query blocks then translated into relational algebra
-
-
-Project, Select, Rename have unary operators
-Union, Intersect, Difference, Joins are Binary
-
-
-End of Material for Exam 1 (beggining to query blocks 5.1)
-
-
-
-
-
-
-
-Indexes
-
->>>>>>> a41845ef54387cc3acfe8f947d094d4fab488b54
+BCNF all non key columns are dependent on the key
