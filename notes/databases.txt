@@ -236,4 +236,44 @@ An attribute if relation schema R is a primary attribute of R if it is a member 
 
 3NF is 2NF where transitive functional dependencies are removed
 
+<<<<<<< HEAD
 BCNF all non key columns are dependent on the key
+=======
+
+Scanner breeaks the test into SQL keywords, attribute names, and relation names
+Parser checks query syntax to determine whether query is formatted correctly
+Validated checks that all attribute and relation names are valid and semantically meaningful in the context of the database
+
+
+
+SQL Is a functional programming language, you tell it to do something and it does that process in whatever way is fastest
+
+SQL queries are broken into query blocks then translated into relational algebra
+
+
+Project, Select, Rename have unary operators
+Union, Intersect, Difference, Joins are Binary
+
+
+
+Anomalies:
+
+Getting rid of partial/transitive functional dependencies, and in turn anomolies, is as simple as getting into 4th normal form
+
+Update anomalie: Make it so you only have to change one value to redefine a attribute value (like switching painting to canvas in the homework), because you would have to change painting to homework in each tuple with the anomalie
+
+Deletion anomalie: You unintentionally remove information from the database by removing the last tuple that has that information in it (for example, removing someone from an office building who was the last person in that building, then deletes the building as well)
+(If you deleted the one value of tapestry, then you no longer know that tapestry is a media type)
+
+
+
+
+End of Material for Exam 1 (beggining to query blocks 5.1)
+
+
+Primary Index is an indexing of a key attribute of a physically ordered data file
+
+Clustering Index is an indexing of a non-key attribute of a physically stored data file
+
+Secondary Index is an indexing of indexes of key or non-key attributes of physically ordered or non-orderd data file
+>>>>>>> fb3c2179d672095e67a11340980e461e8f74cace

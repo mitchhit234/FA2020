@@ -1,0 +1,31 @@
+1. Attendance seems to have one of the most distinct relationships with average exam score. 
+As we can see in our coorelation graph, a large majority of the highest scores were from student that attened class frequently.
+In fact, out of the 44 highest averaging student, 42 of them visted class frequently, and the other two visited occassionally. 
+The average (of exam averages) for students who visited class frequently and occassionally were high as well, with only one data point in each that could be considered an outlier.
+I believe it is safe to say that students who attend STAT 3113 more frequently will be more likely to do better on their exams.
+
+2. Students in STAT 3113 seem to be consistent between tests on average.
+There is a steady trend showing that the score a student gets on exam one is similar to the scores they get on exam two and three.
+There are cases where this does not hold true however, each exam has some outliers where a couple students have drasticly different score between exams.
+But for the majority of students, this trend holds true.
+
+3. Since this study had a disproportiante amount of upper class men to lower class men, I decided the best way to evaluate the coorelation between attendance and college level was a contour graph.
+The contour graph will give more of an emphasis on the proportion of students (per class level) that atteneded class frequently, rather than just the number.
+From looking at the contour graph, there seems to be negligable difference between class levels when it comes to attendance.
+All classes had a large chunk of their students attending frequently, with a slightly smaller percentage of students attend occasionally.
+Only a slightly larger percentage of sophmores and juniors attened class rarely or never compared to freshman are seniors.
+
+4. The relationship between class level and exam scores seems to be similar to our last relationship.
+Our boxplots show that the interquartile ranges for each class level are very close to each other, as well as the means.
+The sophmore class is the only class level with a slightly lower mean compared to the other class levels, but this could simply be attributed to the sophmore class having the lowest outlier by far.
+
+5. According to our data, the top 3 performing majors, based on average exam scores, are
+Architectrual Engineering, Mechanical Engineering, and Mining Engineering. However, when we compare the reliability of this data to the rest of our data, it is much lower.
+This is because we have a wide variety of majors that have taken STAT 3113, so our data for most of these majors consists of a comparibly smaller sample size. 
+With that being said, I believe there is insufficent data here to draw a strong conclusion on which major's have a better chance of obtaining higher exam scores.
+
+6. Using a histogram to analyze our section data, it seems that there is not a big difference between taking section 101 and section 102.
+Both sections have similar data distributions. If we were to point out one difference, however, section 101 seems to be slightly more left skewed, though it is barely noticeable.
+Odds are that section number will not have an impact on a  student's exam score.
+
+7.  (Atendance and Section number)
