@@ -236,9 +236,7 @@ An attribute if relation schema R is a primary attribute of R if it is a member 
 
 3NF is 2NF where transitive functional dependencies are removed
 
-<<<<<<< HEAD
 BCNF all non key columns are dependent on the key
-=======
 
 Scanner breeaks the test into SQL keywords, attribute names, and relation names
 Parser checks query syntax to determine whether query is formatted correctly
@@ -276,4 +274,6 @@ Primary Index is an indexing of a key attribute of a physically ordered data fil
 Clustering Index is an indexing of a non-key attribute of a physically stored data file
 
 Secondary Index is an indexing of indexes of key or non-key attributes of physically ordered or non-orderd data file
->>>>>>> fb3c2179d672095e67a11340980e461e8f74cace
+
+
+
