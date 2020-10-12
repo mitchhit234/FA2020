@@ -171,5 +171,86 @@ To summarize the conclusion's by objective:
 \end{enumerate}
 
 \section*{Problem 2}
+\begin{enumerate}[I.]
+\item
+We require a geometric distribution model in order to determine the number if driver files that are randomly drawn until the company finds one that has not exceeded their deductible 
+
+Our parameter is $p = 0.88$ so our expected value is
+
+\[ E(X) = \frac{1}{p} = \frac{1}{0.88} = 1.14 \]
+
+We know this problem represents a geometric distribution because it is an experiment that has independent trials with the same constant probability p of success, and it also ask how many trials will be conducted until a success is obtained \\
+
+
+\item
+We need to find the mean of the binomial distribution of X in this problem to determine the number of defective transistors in a batch of fifty produced 
+
+Our parameters are $p = 0.02$ and $n = 50$, so our expected value is
+
+\[ E(X) = n*p = 0.02 * 50 = 1  \]
+
+We know this problem represents a binomial distribution because each trial has a boolean outcome (success or failure), all trials are independent, and the probabilty p is the same for each trial \\
+
+\item
+We require a geometric distribution model in order to determine the number of transistors examined before finding the first defective transistor
+
+Our parameter is $p = 0.02$ so our expected value is
+
+\[ E(X) = \frac{1}{p} = \frac{1}{0.02} = 50 \]
+
+We know this problem represents a geometric distribution because it is an experiment that has independent trials with the same constant probability p of success, and it also ask how many trials will be conducted until a success is obtained \pagebreak
+
+\item
+We need to find the mean of the poisson distribution of X in this problem to determine the number of volcanic eruptions in japain within one year
+
+Unfortanutley, we are not given any $\lambda$, only the time period that the $\lambda$ would reside in. This means we have insufficent data to find the expected value $E(X)$ \\
+
+\item
+We need to find the mean of the binomial distribution of X in this problem to determine the number of tours that are unsuccessful
+
+Our parameters $p = 0.2$ and $n = 10$, so our expected value is
+
+\[ E(X) = n*p = 0.2 * 10 = 2  \]
+
+We know this problem represents a binomial distribution because each trial has a boolean outcome (success or failure), all trials are independent, and the probabilty p is the same for each trial \\
+
+\item
+We need to find the mean of the poisson distribution of X in this problem to determine the number of power failures in Planet007 per three weeks
+
+Our parameter $\lambda = 9$ because we know if our $\lambda$ for a week is 3, we know our lambda in a time period three times that is $3 * \lambda = 9$, so our expected value is
+
+\[ E(X) = \lambda = 9 \]
+
+We know this problem represents a poisson distribution because it is a distribution of discrete occurences over an interva, where those occurences can range from 0 to $\infty$ \pagebreak
+
+\end{enumerate}
+
+\section*{Problem 3}
+\noindent To show the geometric distribution is a valid probability distribtion, lets make up an example experiment that falls under the category of a geometric distribution \\
+
+\noindent Let's say a baseball team has a 25 percent chance of winning a game for each game they play. We want to show that, given enough games, the probability that this baseball team has won at least one game is approximatley equal to 1.  \\
+
+\noindent The value of our random variable $X$ for a given $x$ numbered game is 
+
+\[ f(x) = (1 - p)^{x-1}p = 0.75^{x-1} * 0.25 \]
+
+\noindent Let's give this baseball team an infinite number of games to play in order to win at least one. With an infinite number of games, our new probability function would be
+
+\[ f(x) = \sum^{\infty}_{x=1} 0.75^{x-1} * 0.25 \]
+
+\noindent Calculating each value of x for this summation, we can start to see a trend 
+
+\[ x = 1, f(x) = 0.25 \]
+\[ x = 2, f(x) = 0.1875 \]
+\[ x = 3, f(x) = 0.140625 \]
+
+\noindent So we see that our probability of the baseball team winning its first game is going down by the game. This is because for each new game, we must take the probability that the baseball team would win the game times the probability that the baseball team has not won a game to this point \\
+
+\noindent If we continute, x gets smaller at a rate that the total summation of probabilites will never be greater than 1, but it will get very close, close enough that you could determine that 
+
+\[ f(x) = \sum^{\infty}_{x=1} 0.75^{x-1} * 0.25 \approx 1 \]
+
+
+\noindent Proving that this geometric distrubution is a valid probability distribution
 
 \end{document}
