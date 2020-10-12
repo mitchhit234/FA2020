@@ -702,16 +702,59 @@ Table 3.1 on pg 260 is a good recap for reliable data transfer terms
 
 
 
-
-
 Connection Oriented Transport (TCP):
 
+Connection oriented means that two processes must "handshake" before they start transmiting data between each other
+TCP provides a full duplex service, data from A to B can flow at the same time as data flows from B to A
+TCP is a point to point connection, meaning there is no multicasting (one to many) connections with TCP
+
+The maximum amount of data that can be placed in a segment is called the maximum segment size (MSS)
+MSS is usually determined by the largest link layer frame that can be sent by the local host called the maximum transmission unit (MTU)
+
+TCP header field is typically 20 bytes (12 bytes more than UDP header field)
+TCP segment includes:
+Source port and Dest port #'s (4 bytes)
+Sequence number field (4 bytes) and acknowledgment number field (4 bytes) are both used for reliable data transfer procedures
+Header length field (4 bit) specifies length of TCP header (needed because sometimes the options field is not present)
+Options field is used when the reciever andsender negotiate the MSS 
+The flag field contains 6 bits, one for each flag:
+	ACK used to indicate whether value in acknowledgement field is valid
+	RST, SYN, FIN used for connection setup and tear down
+	CWR and ECE are used in congestion control
+	The next two bits are not used but are mentioned for some reason
+	PSH bit determines whether data is passed to upper layer immediatley
+	URG marks the segment as urgent. The location of the last byte of urgent data is determined by the value in the urgent data pointer (4 byte)
 
 
+When TCP breaks up a file into segments, it gives each segment a sequence number based on the # of byte that segment starts on
+EX: file consists of 500,000 bytes, the MSS is 1,000 bytes, the first segment's sequence number is 0 (for illistrative purposes, the starting point is actually randomly assigned), the second is 1000, etc.
+
+As for acknowledgment numbers, the acknowledgement number a server will give a client in its acknowledgement segment is the next sequence number it expects from the client in that client's next segment
+
+TCP uses cumlulative acknowledgements. As for what it does with out of order recieved packets, that is up to the developer implementing TCP. Usually though, they keep the out of order bytes and wait for missing bytes to fill in the gap, to take better advantage of network bandwith
 
 
+TCP calculates an EstimatedRTT to determine the best values for its timers that maximize data rate and correct lost packet detection
+SampleRTT is a value given once each RTT (not once each segment) of a paticular segment's actual RTT
+
+EstimatedRTT = (1 - a) * EstimatedRTT + a * SampleRTT
+
+a is used as a weight variable, the most common value of a being 1/8
+This weighted average of SampleRTTs places more weight on recent RTT's than old ones. In stats, this is called an exponential weighted moving average (EWMA)
+
+TCP also calculates a value, DevRTT, fot the deveation of the SampleRTTs
+
+DevRTT = (1 - B) * DevRTT + B * abs(SampleRTT - EstimatedRTT)
+
+DevRTT is a EWMA for the difference between SampleRTT and EstimatedRTT. The larger the variation, the larger the value of DevRTT
+
+TCP's final timeout interval uses these two values to derive its own value
+
+TimeoutInterval = EstimatedRTT + 4 * DevRTT
+
+Before these two values are able to be calculated, the default TimeoutInterval is reccomended to be one second
 
 
-
+As for how TCP handles timers, it doesn't have a timer variable for each individual packet, rather it keeps and updates its timer to be associated with the oldest unacknowledged segment
 
 
