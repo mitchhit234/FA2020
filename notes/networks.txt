@@ -754,7 +754,46 @@ TimeoutInterval = EstimatedRTT + 4 * DevRTT
 
 Before these two values are able to be calculated, the default TimeoutInterval is reccomended to be one second
 
-
 As for how TCP handles timers, it doesn't have a timer variable for each individual packet, rather it keeps and updates its timer to be associated with the oldest unacknowledged segment
+TCP also doubles the timer interval for a segment whenever it has to be retransmitted (if the timer already expired once before). This also contributes to congestion control
 
+Often times a TCP sender will be able to tell if a packet was lost before timeout. This is because the reciever will most likely have sent a duplicate ACK (an ACK for which the sender has already recieved an earlier acknowledgement). Since TCP does not have negative acknowledgement, the receiver sends an ACK for its last in order recieved segment when it gets a segment that does not have its next expected sequence number
+Table 3.2 on 278 has a list of what the reciever's response is to certain packets being sent
+
+If three duplicate ACKs are recieved, the TCP sender performs a fast retransmit, retransmitting the missing segment before that segment's timer expires
+
+TCP's error recovery system ends up being a hybrid of GBN and SR
+
+
+
+Flow Control
+While congestion control and flow control both acheive their goals by throttling the sender, their goals are different. The goal of congestion control is to limit congestion in the IP network, while flow control is used to eliminate the possibility of the reciever's buffer being overflowed by the sender
+
+TCP accomplishes flow control by having the sender keep track of a variable called the recieved window. This variable represents how much free buffer space is avaliable at the reciever
+
+rwnd = RcvBuffer - [LastByteRcvd - LastByteRead]
+
+The rwnd variable (the amount of room left in the receive window) is sent from the reciever to the sender in every segment (is a part of the header file)
+LastByteRcvd is the number of the last byte in the data stream that has arrived from the network and been placed in the recieve buffer at B
+LastByteRead is the number of the last byte in the data stream that has been passed to the application layer
+RcvBuffer is the max size of the reciever's recieve buffer
+
+The sender in turn keeps track of two variables, LastByteSent and LastByteAcked
+Taking the difference of those two variables (amount of unACKd data), the sender's goal is to make sure that difference always stays less than the rwnd variable it recieves from the recieving host. Then, it is guaranteed to not overflow the recieve buffer with its segments
+
+If rwnd ends up being 0 at some point, there is no longer any incentive for the hosts to send segments to each other. Thats why TCP still forces the sender to send segments with one data byte to the reciever, so the reciever will have a reason to respond with ACKs, which will have updated rwnd values in their headers
+
+
+
+TCP Connection Management
+The steps below are how a TCP connection is established in a three way handshake method
+1. Client side sends a special TCP segment to the server. This segment contains no application data. Its SYN flag bit is set to 1, and the client randomally chooses an initial sequence number called client_isn and puts it in the sequence number field
+2. If the SYN segment arrives at the server, the server allocates its buffers and variables for the connection, then sends a connection granted segment to the TCP client (this is the vulnerability DDOS attacks take advantage of in the form of a SYN flood attack. pg 288 for the counter measure, SYN cookies). This connection granted segment also has no application data, its SYN bit is set to 1, its ACK field is set to client_isn+1, and the server also randomly chooses its own initial sequence number, server_isn, and puts it in the sequence number field. This segment is refered to as a SYNACK segment
+3. Upon recieving a SYNACK segment, the client allocates its buffer and variables, then sends its own ACK to the server and puts server_isn+1 in its acknowledgement field. The SYN bit is now set to zero since the connection is established.
+
+A similar process is used for closing a TCP connection. If the client is closing, it will send a segment to the server with the FIN flag set to one. The server will send an ACK segment, as well as a FIN segment of its own. The client will acknowledge the FIN segment, then the connection will be closed
+
+Figure 3.41 and 3.42 has a diagram of TCP states that the client and server will go through in the lifetime of their connection (pg 286)
+
+If a TCP server recieves a SYN segment that contains a destination port # that is not currently listening on the server, then the server will send a segment back with the RST flag bir set to 1. This is the server telling the client "I don't have a socket for that segment. Please don't resend the segment"
 
