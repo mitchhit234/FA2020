@@ -797,3 +797,78 @@ Figure 3.41 and 3.42 has a diagram of TCP states that the client and server will
 
 If a TCP server recieves a SYN segment that contains a destination port # that is not currently listening on the server, then the server will send a segment back with the RST flag bir set to 1. This is the server telling the client "I don't have a socket for that segment. Please don't resend the segment"
 
+
+
+Principles of Congestion Control
+There are 3 major causes of congestion in a network:
+1. As packet arrival rates near the link capacity, large queuing delays are experienced
+2. Packets are needlessly transmitted, causing routers to use precious link bandwith to forward a packet that did not need to be forwarded
+3. Packets can be forwarded along multipule different points on a path, but they may suddenly run into a hotly contested point where packets are being lost to buffer overflow. This results in every single point leading up to that having its work wasted forwarding that packet.
+
+
+The offered load is the rate at which data is sent, including retransmitted segments
+
+There are two broad approaches to congestion control:
+1. End to end congestion control, where no data is passed from the network layer to the transport layer, is the approach TCP implements (since IP does not provide explicit support to the transport layer). The presence of congestion must be infered by the transport layer based off network activity, such as packet loss and delay. 
+2. Network assisted congestion control, where the network layer will pass information to the transport layer to specifically point out congestion. Used in protocols like ATM's Avaliable Bit Rate (ABR), where a router informs the sender of the maximum host sending rate the router can support on an outgoing link
+
+
+
+
+TCP Congestion Control
+
+In addition to all the variables we talked about before, the TCP sender also stores a variable for congestion control called the congestion window
+cwnd is very similar to rwnd
+LastByteSent - LastByteAcked <= min{cwnd, rwnd}
+Just like with rwnd, the sender's rate is going to be something around
+cwnd/RTTbytes/sec
+
+A TCP sender can percieve congestion via a loss event
+A loss event consits of a timeout or receiving three duplicate ACKs
+TCP is also self clocking, meaning it will use the rate at which it recieves non-dupliacte acknowledgements as the means to increase its congestion window size
+
+TCP uses the following principles when it comes to detecting and responding to congestion:
+1. A loss segment implies congestion, and the TCP sender's rate should be decreased when a segment is lost
+2. A non duplicate ACK indicates that the network is delivering segments to the reciever, and that the sender's rates can be increased 
+3. TCP bandwith probes, meaning that it will steadily increase its congestion window size until it runs into a loss event, dial back the cwnd, then start to steadily increase it again
+
+These principles all play into the TCP congestion control algorithim, which has three major components:
+1. Slow start
+2. Congestion avoidance
+3. Fast recovery
+
+Slow start algorithm starts the cwnd value at 1 MSS, and increases the windows size 1 MSS for every non-duplicate ACK it recieves. Thus, the TCP send rate starts out small but grows exponentially
+Once a loss event occurs, a couple of different scenarios can occur depending on the implementation. 
+One is the cwnd reverts back to 1 MSS, and the variable ssthresh (slow start threshold) is set equal to cwnd/2 (the cwnd before it was reverted to one). 
+Another way is cwnd can approach and then equal ssthresh. When this happens, it could be reckless to keep doubling the cwnd size, so slow start could pivot over to congestion avoidance, where it increases cwnd more cautiously
+Also if the loss event is three duplicate ACKs, slow start could transition to fast recovery mode
+The figure 3.51 on page 301 has an in depth chart for TCP slow start
+
+In congestion avoidance, TCP increases the congestion window size once every RTT instead of once every ACK segment like slow start does
+When congestion avoidance recieves a timeout, it goes back to slow start. When it recieves three duplicate ACKs, it goes to fast recovery
+
+When entering fast recovery, ssthresh is set the same way, but cwnd is set differently
+cwnd = ssthresh+3 * MSS , the plus three is used to account for the three duplicate packets
+In fast recovery, the cwnd is increased by 1 MSS for each duplicate ACK that is recieved of the same sequence number. Once a new ACK is recieved, the algorithm goes back to congestion avoidance. If there is a timeout, the algorithm goes back to slow start
+
+An earleir version of TCP called TCP Tahoe did not have this fast recovery state. The newer version of TCP, TCP Reno, does however
+
+TCP Splitting optimitzes response times of clients to servers by introducing persistent TCP connections betweens links in the server (for example, the database server and front end server for a website)
+
+TCP congestion control is refered to as an additive increase multiplitative decrease (AIMD) form on congestion control
+
+Many TCP implementations use this AIMD algorithm, but others like TCP vegas try to detect congestion before packet loss occurs (by monitoring RTTs) and lower the sender rate lineraly rather than multiplicativley
+
+Under TCP's AIMD algorithm, we can calculate the average throughput of a connection to be
+avg = (0.75 * W)/RTT, where W equals the window size when a loss event occurs
+It can also be calculated as a function of L( loss rate), RTT, and MSS
+avg = (1.22 * MSS)/(RTT * sqrt(L))
+
+
+Fairness
+A congestion control mechanism is said to be fair if the average transmission rate of each connection is approximately R/K, with R equal to the tranmission rate of a link and K equal to number of TCP connections on said link
+
+
+Explicit Congestion Notification (ECN)
+More recently, extensions to both IP and TCP have been proposed and implement to allow for network assisted congestion control. The network can now in these implementations explicitly signal network congestion to hosts. This form of network assisted congestion control is know as Explicit Congestion Notification
+How it works is if a sender and reciever both have flagged their ECN bit showing they are ECN compatible, a router will send an ECN congestion notification along in its datagram that is going to the reciever. The reciever will include in its next ACK to the sender a flag on the ECE bit (Explicit Congestion Notification Echo) to say there is congestion. The sender then takes action by halfing its congestion window, then marking the CWR bit in its next packet to signal it has reduced its congestion window
