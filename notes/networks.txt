@@ -997,4 +997,45 @@ The remaining 32-x bits distinguish the interfaces within the organization
 Before CIDR was adopted, network portion (prefixes) of an IP address were constrained to be 8, 16, or 24 bits in length (this was called classful addressing)
 This was a problem because IP networks could only support a set number of end 
 systems (254 for /24, 65,634 for /16) (2 addresses are reserved for special use, otherwise itd be 256 and 65636). This led to a rapid deletion of address space
+The IP brodcast address, 255.255.255.255, is reserved for a signal to send the message to all hosts on the same subnet
 
+
+Obtaining a Block of Addresses
+ISP's can designate subsets of their own subnet to an organization, but how does the ISP obtain its subnet?
+The Internet Corporation for Assigned Names and Numbers (ICANN), is a nonprofit organization that allocates IP addresses and manages root DNS servers. It also assigns domain names and resolves domain name disputes
+ICANN allocates addresses to regional internet regestries (ARIN, RIPE, APNIC, LACNIC), and those registries handle the allocation of addresses within their region
+
+Dynamic Host Configuration Protocol (DHCP)
+A system admin will usually manually configure IP address for router interfaces in its organization. However, for end system interfaces, addresses can be configured automatically with Dynamic Host Configuration Protocl (DHCP)
+DHCP is refered to as a plug and play or zeroconf protocol
+
+DHCP can be configured to give a host the same IP address every time it connects to the network, or it may be assigned a temporary IP address that will be different each time it connects to the network
+
+DHCP is a client server protocol, where a client is a newly arriving host wanting to obtain network config information, and the server is a DHCP server used across the subnet to assign and configure this information for the client (can be inside the router as well)
+
+For a newly arriving host, the DHCP protocol is a four step process:
+1. DHCP server discovery - the host sends out a DHCP discover message with UDP to port 67. Since it has no information on the subnet's DHCP server, it sends this message to 255.255.255.255 (which sends its to all of the subnet), and sets its address as 0.0.0.0 . 	
+2. DHCP server offer(s) - DHCP recieves a discover message and responds to the client with a DHCP offer message and an address lease time. This is also broadcast to 255.255.255.255 . There could be multipule DHCP servers, so the client might get multipule offers
+3. DHCP request - client reads offer(s), chooses one, and responds to that client with a DHCP request message to recieve config parameters
+4. DHCP ACK - server responds to request message with a DHCP ACK message including parameters
+
+
+
+Network Address Translation (NAT)
+
+The address spaces 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 are the three portions of the IP address space that is reserved for a priavte network or realm with prtivate addresses
+Millions of devices have these IP addresses, therefore when a host references once of these, it is a given that they are referencing a part of their subnet
+A NAT enabled router does not look like a router to the outside world; instead it looks as if it is a single device with a single IP address
+NAT routers use a NAT translation table to direct traffic to the correct hosts in its subnet
+
+A host on the subnet sends a datagram as normal to its router. The NAT router recieves the datagram, generates a new source port number, replaces the source IP with its own, and sends it out to the Internet. When a response comes back from the destination IP containing the NAT's IP and its randomly chosen port number as the destination port, the NAT router will be able to refer to its translation table to see which IP and port it assigned that random port too, and forward it acordingly. Because the port field is 16 bits, a NAT router can hold 60,000 simultaneious connections with a single IP address
+
+NAT has some problems since it is using ports for a purpose they were not intended for (directing to host and processes rather than just directing to processes) 
+Servers listening on certain ports and peers that also need to listen on certain ports are going to have problems
+NAT traversal tools (RFC 5389) like Universal Plug and Play (UPnP) is a protocol that allows a host to discover and configure a nearby NAT
+
+NATs and other middleboxes operate in a network layer but have quite different functions from routers, such as NAT, load balancing, traffic firewalling, and more
+
+
+
+IPv6
