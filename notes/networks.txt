@@ -872,3 +872,62 @@ A congestion control mechanism is said to be fair if the average transmission ra
 Explicit Congestion Notification (ECN)
 More recently, extensions to both IP and TCP have been proposed and implement to allow for network assisted congestion control. The network can now in these implementations explicitly signal network congestion to hosts. This form of network assisted congestion control is know as Explicit Congestion Notification
 How it works is if a sender and reciever both have flagged their ECN bit showing they are ECN compatible, a router will send an ECN congestion notification along in its datagram that is going to the reciever. The reciever will include in its next ACK to the sender a flag on the ECE bit (Explicit Congestion Notification Echo) to say there is congestion. The sender then takes action by halfing its congestion window, then marking the CWR bit in its next packet to signal it has reduced its congestion window
+
+
+
+
+
+Chapter 4 Network Layer Data Plane
+
+The primary goal of the network plane is to move packets from a sending host to a receiving host
+To acheieve this, two important network layer functions can be identified:
+Forwarding (also refered to as switching) - when a packet arrives at the router's input link, the router's job is to forward that packet to the appropriate output link (still inside the same router) (data plane)
+Routing - the network layer must determine the path taken by packets as they flow from two end systems. It uses routing algorithms to achieve this (control plane)
+Forwarding is often implemented in hardware (a few nano seconds) and Routing in software (typically a few seconds)
+A key element in every router is its forwarding table, which examines the value of a packet's header and uses them to index its forwarding table. That index directs the packet to the correct output link
+SDN or software defined networking is a recent approach that takes the forwarding table calculations and removes them from the routers in a system, and instead implement their calculations in a remote controller that sends the tables to each connected router
+
+The network service model defines the characteristics of end to end delivery that the network layer could provide. These services can include:
+Guaranteed Delivery
+Guaranteed Delivery with bounded delay
+In order packet delivery
+Guaranteed minimal bandwith
+Security
+And many more
+
+The internet's network layer provides only a single service, called best effort delivery, which makes no guarantees about anything
+
+A packet switch transfers a packet from input link interface to output link interface according to values in the packet's header fields
+A subset of packet switches, called link layer switches, base their forwarding decision upon values in the fields of the link layer frame (making these switches link layer devices)
+Another subset of packet switches is the router, which base their forwarding on decisions in the header field values in the network layer data gram (making these switches network layer devices)
+
+
+Inside the router architecture there is:
+Input ports perform a couple key functions. First, they terminate an incoming physical link to the router. Secondly, they perform link layer functions needed to interoperate with the link layer function on the other side of the connection. Third, they perform a lookup function, consulting the forwarding table to determine the output port to which its packet will be forwarded to via the switching packet. This part will also pass on control packets to the routing processor
+The switching fabric connects the router's input and output ports (acts as their network)
+Output ports stores packets recieved from the switching fabric and transmits these packets to the outgoing link by performing the neccesary link layer and physical layer functions. Often, these ports are bidirectional, meaning both ports will be performing each other's functions from time to time
+The routing processor performs control plane functions, such as executing routing protocols and maintains the routing tables. In SDN routers, it is responsible for communicating with the remote controller
+
+Destination based forwarding bases the output port on a packet's final destination
+Generalized forwarding takes many more factors into consideration, such as the packets importance
+
+
+
+Input Processing and Destination Based Forwarding
+Input processing needs to be fast (less than a microsecond in many cases) to keep up with today's gigabit speeds. As such, input processing uses many different techniques to make that happen 
+
+Forwarding table is copied from the processor to the line cards over a seperate bus. With these shadow copies at each input port, the port can make forwarding decisions locally without having to reference the processor on a packet by packet basis
+
+Ternary Content Addressable Memories (TCAM) are often used for lookup tables. With TCAM, a 32 bit IP address is presented to memory, and returns the content of the forwarding table for that entry in almost constant time. THey can hold upwards of a million table entries
+
+One example of a forward table with destination based forwarding is each output port is given a range of addresses. Then, you only need to match up the common prefix of the high and low range of the window to determine which port the packet goes too
+The router will use the longest prefix matching rule if mutlipule ranges happen to have part of the same prefix
+
+Although lookup is one of the more important steps that take place in input processing, other important functions reside here as well, such as physical and link layer processing, queuing of packets to be entered into the switching field, checking of a packet's version number, checksum, and time to live field, and counters used for network management
+
+The match plus action behaviour of the input port is an abstraction that occurs in many other parts of networking, not just routers
+
+
+
+Switching
+
