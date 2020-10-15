@@ -962,4 +962,39 @@ Work conserving queuing will never allow the link to remain idle when there are 
 
 The Internet Protocl (IP)
 
+The internet's network layer packet is refered to as a datagram
+The datagram for IPv4 consists of the follwing header lines:
+Version number (4 bits) - specifies the IP protocol version of the datagram (IPv4, IPv6, etc.)
+Header length (4 bits) - needed because the options field, which is apart of the header, can contain a range of bits (often times 0). Determines at what point the payload (transport layer segment being encapsulated) exists
+Type of service (8 bits) - allows different types of datagrams to be distinguished, and certain actions to be taken upon these different types (such as real time vs non real time datagrams)
+Datagram length (16 bits) - total length of the header lines plus data in bytes is stored here. Since this line is 16 bits, the maximum size of an IPv4 datagram is 65,535 bytes. In practice, datagrams are rarely larger than 1,500 bytes
+Identifier, flags, and offset (16 bits, 3 bits, 13 bits) - these deal with fragmentation (discussed later). IPv6 does not allow for fragmentation
+Time to live (8 bits) - (TTL), ensure that datagrams do not circulate forever. Decremented each time is processed by a router. If it reaches 0, the datagram is dropped by the router
+Upper layer protocol (8 bits) - indicates the specific transport layer protocl to which the data portion of the IP datagram is passed too (EX: 6 for TCP, 17 for UDP)
+Header Checksum (16 bits) - aids routers in detecting bit errors in a recieved datagram. Works the same as transport checksums. Routers typically drop error ridden datagrams
+Source and destination IP addresses (32 bits each) - self explanatory
+Options - self explanaotory. Are not included in IPv6 due to extra information/processing time needed for them to exist
+Data/payload - carries the transport layer segment 
+A total of 20 bytes of header information not including if there are any options
+
+
+IPv4 Datagram Fragmentation
+The maximum amount of data a link layer frame can carry is called the maximum transmission unit (MTU). For ethernet, this is 1,500 bytes of data
+The MTU places a hard limit on the size of a datagram packet, and the MTU can be different at each stage of the datagrams journey
+Dividing up a datagram into smaller datagrams to meet these requirements is called fragmentation
+Since the transport layer will not accept fragmented packets, they must be unfragmented at some point. This is done at the end system's network layer to keep the network core as simple as possible
+Identifier tells you the number of the datagram in order of the fragmented packet. Flag bit set to 1 unless it is the last fragment, then its set to 0. Offset field specifies where each fragment fits within the original datagram
+
+
+IPv4 Addressing
+An IP address is techincally associated with an interface (the boundarty between the host and physical link) rather than the host or router containing that interface (this is kinda dumb but might be a test question)
+These addresses are usually written in dotted decimal notation, with each byte value being seperated by a dot (EX: 192.168.0.1)
+Each interface on every host and router in the global internet must have an IP address that is globally unique (except for interfaces behind NATs). A portion of an interface's IP address will be be determined by its subnet/IP network
+IP addressing assigns address to a subnet such as giving it the subnet mask 223.1.1.0/24 . The slash 24 is the subnet mask that indicates the left most 24 bits of the 32 bit define the subnet address. Therefore, in a slash 24 subnet, there can be addresses between 223.1.1.0 and 223.1.1.255
+
+The internet's assignemnt stratergy is know as Classless Interdomain Routing (CIDR). CIDR assigns an organization a block of contigious addresses; addresses where their prefix is identical (a.b.c.d/x for some value x). This helps router's forwarding tables outside an organizationn because often times they will only need to consider the prefix of a address (known as address aggregation/ route aggregation / route summarization)
+The remaining 32-x bits distinguish the interfaces within the organization
+Before CIDR was adopted, network portion (prefixes) of an IP address were constrained to be 8, 16, or 24 bits in length (this was called classful addressing)
+This was a problem because IP networks could only support a set number of end 
+systems (254 for /24, 65,634 for /16) (2 addresses are reserved for special use, otherwise itd be 256 and 65636). This led to a rapid deletion of address space
 
