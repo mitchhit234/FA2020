@@ -931,3 +931,35 @@ The match plus action behaviour of the input port is an abstraction that occurs 
 
 Switching
 
+Three main switching fabric types:
+Switching via memory - input port signaled processor via interupt, packet was then copied into processor memory, where destination address was addressed and processed, followed by being forwarded to the appropriate output port. Each packet takes up the entire attention of the processor/memory, making it so only one packet from the collection of all ports can be forwarded at a time
+Switching via a bus - port transfers packet directly to output port without intervention by the processor. All output ports recieve a packet, but only one accepts the packet based on header info, the others drop the packet. Similar to memory though where only one packet can travel the bus at a time
+Switching via an interconnection network (crossbar) - fabric is set up like a bus except there are 2N buses for every N ports. This allows for, lets say, input port A to send packets to output port Z at the same time B is sending to Y. Vertical buses intercept horizontal buses, and these intersects can be closed/opened at any time
+
+
+Output Port Processing
+
+Packet loss occurs at a port's queueing (buffer management) stage when a new packet arrives at a moment when the buffer is already full. The port must discard either the incoming packet (drop tail) or another packet in buffer when this happens
+This can occur at the input port for example in a crossbar switching router, when two input ports are trying to send information to the same output port. Since only one can send to an input port at a time, one must wait, all the while filling up their input buffer more from incoming packets. 
+When a packet at the front of a buffer is preventing packets behind it from reaching their output port (say packet 1 is waiting for output port 1 to be ready, but packets 2-100 want to go to output port 3, which is open, but can't because of packet 1), it is callsed head of the line (HOL) blocking
+
+AQM, or active queue management, are techniques that aim to proactively solve packet dropping One of the most widely used AQM's is Random Early Detection (RED)
+
+When calculating the amount of buffer needed for these input and output ports, the old rule was usually B = RTT * C (link capacity, such as 10 Gbps)
+The new accepted rule is B = RTI * C/srqt(N)
+
+
+Packet Scheduling
+Packet scheduling deals with the order of which queued packets are transmitted over the network
+First in First Out (FIFO), also knows as First come First Served (FCFS) is pretty self explanatory
+Priority queueing divides packets into subgroups, and gives those certain subgroups priority over other groups in being sent out first. Under non-preemptive priority queueing, the transmission of a "lesser" packet will not be stopped if, during its processing, a high priority packet arrives
+Round Robin and Weighted Fair Queuing (WFQ) use concepts from priority queuing, but give certain subgroups different weights, guaranteeing them a bandwith that is a function of their weight and the link capacity
+Work conserving queuing will never allow the link to remain idle when there are packets of any class queued for transmission
+
+
+
+
+
+The Internet Protocl (IP)
+
+
