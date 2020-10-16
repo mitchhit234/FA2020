@@ -999,6 +999,8 @@ This was a problem because IP networks could only support a set number of end
 systems (254 for /24, 65,634 for /16) (2 addresses are reserved for special use, otherwise itd be 256 and 65636). This led to a rapid deletion of address space
 The IP brodcast address, 255.255.255.255, is reserved for a signal to send the message to all hosts on the same subnet
 
+A unicast address is used to refer a single host
+A multicast address is used to deliver a packet to a group of hosts
 
 Obtaining a Block of Addresses
 ISP's can designate subsets of their own subnet to an organization, but how does the ISP obtain its subnet?
@@ -1039,3 +1041,60 @@ NATs and other middleboxes operate in a network layer but have quite different f
 
 
 IPv6
+Started being developed in the 1990's once it became clear unique 32 bit addressess were going to be exhausted soon
+The IANA allocated its last remaining pool of unassigned IP addresses in 2011
+
+Enhancements made to the IPv6 datagram:
+Expanded addressing capabilities - increased the size of the IP address from 32 bits to 128 bits. Also introduced a new type of address, an anycast address, that allows a datagram to be delievered to any one of a group of hosts
+Streamlined 40 byte header - by removing the options field, a IP datagram will now always be 40 bytes long, removing the need for some of the old header fields
+Flow labeling (20 bits) - allows labeling of packets to paticular flows for which the sender requests special handling, such as a real time service. Basically a way to give packets better treatment
+Payload length (16 bits) - gives the size of the datagram minus the fixed 40 byte header size
+Next header (8 bits) - does what the protocol field did in IPv4
+(Figure 4.26 on page 378)
+
+Fields that IPv6 deleted from IPv4:
+Fragmentation - fragmentation can not be done with IPv6. If an IPv6 datagram is too large for a router, it will simply send a Packet Too Big ICMP error message back to the sender. It then becomes the sender's job to resend the data using smaller datagrams
+Header Checksum - developers thought this redundant since the link/transport layers perform the same operation, so it was removed
+Options - explained earlier
+
+
+Transitioning from IPv4 to IPv6
+IPv6 systems are backwards compatible, but IPv4 machines are not compatible with IPv6
+The approach to the IPv4 to IPv6 most widely adapted is tunneling
+Say you have a set of IPv6 hosts connected by IPv4 routers. The IPv6 hosts can encapsulate their IPv6 datagram into the payload of an IPv4 datagram, continue as an IPv4 datagram, then decapsulate to IPv6 once it reaches the IPv6 compatible device. To signal a IPv4 datagram with an IPv6 datagram as the payload, a value of 41 is put in the IPv4 datagram protocl number field
+
+
+Generalized forwarding and SDN
+In generalized forwarding, a match plus action table matches values of multipule header fields to determine the action that is made with the datagram; this can include forwarding the packet to one or more outputs, load balancing packets across multipule interfaces, rewritting header files (NAT), dropping a packet, and sending a packet to a server for special processing (DPI)
+These devices are refered to as packet switches, and can be made using network and/or link layer properties
+The following information about generalized forwarding will be based on OpenFlow (ONF 2016)
+
+Each enrty in a match plus action table, known as a flow table, includes:
+A set of header field values to which an incoming packet will be matched. A packet that doesn't match any flow table entry can be dropped or sent to DPI
+A set of counters that track the number of packets that have been matched to a table enrtry
+A set of actions to be taken when a packet matches a flow table entry
+
+The flow table is essentialy an API for controlling an individual packet switch's behavior
+
+
+Match
+OpenFlow can match a variety of different packet fields from many different layers
+For example, OpenFlow 1.0 can address header information in a link layer packet, datagram, and segment (figure 4.29 page 385), three different layers
+While some information about headers can be matched to a flow table. OpenFlow does not allow all of them too be because of worries about bloating the system
+
+
+Action
+If multipule actions match a flow table entry, they are taken in this order:
+Fowarding - either to one, many, or multicast over a subset of ports. Also can be forwarded to the processor for adjustments
+Dropping - A flow table with no action indicates that the packet should be dropped
+Modify Field - In OpenFlow 1.0, ten different values in the header fields for link, network, and transport layer can be overwritten
+
+Flow tables and packet switching are the keys t many functions such as load balancing, firewalls, and virtual networks
+Examples of flow table actions are on page 388
+
+
+
+
+
+
+Chapter 5 Network Layer Control Plane
