@@ -277,3 +277,42 @@ Secondary Index is an indexing of indexes of key or non-key attributes of physic
 
 
 
+
+
+
+
+
+
+
+
+
+
+Test 1 Notes
+
+A functional dependency is a constraint between two sets of attributes
+EX: X -> Y means 
+X functionally determiens Y
+Y depends on the value of X
+Y is functionally dependent on X
+
+X -> Y if and only if whenever tuples with the same value of X have the same value of Y
+One way relationship
+May become illegal if the real world relationship changes
+
+A partial functional dependency is a functional dependency between an non key attribute and part, but not all, of the primary key
+
+
+Peter Pin-Shan Chen developed ER modeling for database design in the 70s
+Edgar F Codd invented the relational model for database management
+
+Tuples with a NULL value for an attribute that is involved in the join condition of an inner join are dropped, but not an outer join
+
+Nested queries contain an outer select and an inner select
+Correlated nested queries are nested queries where the inner query is ran for each row in the outer query
+
+WHERE EXISTS evaluates as a boolean
+
+Aggregate functions are used to get summary statistics across all the resulting rows of a query (EX: AVG, COUNT, MAX, MIN, SUM)
+ROUND and TRUNC deal with aggregate functions and precision (number of digits after the decimal)
+
+What is semi-join?dr
