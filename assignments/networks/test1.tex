@@ -1,0 +1,100 @@
+\documentclass[14pt]{article}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{extsizes}
+\usepackage{titling}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage[inline, shortlabels]{enumitem}
+\usepackage[margin=1.25in]{geometry}
+
+\newcommand{\bd}{\textbf}
+
+\setlength{\droptitle}{-5em} 
+
+\title{Networks Midterm}
+\author{Mitchell Meier}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Problem 1}
+
+\begin{enumerate}
+\item True \item True \item False, DNS is used to translate IP addresses \item True \item True \item False, this is True for a loss indicated by triple duplicate ACKs, but a loss due indicated by timeout will set cwnd back to 1
+\end{enumerate}
+
+\subsection*{Problem 2}
+\begin{enumerate}
+\item
+\[ d_{nodal} = d_{proc} + d_{queue} + d_{trans} + d_{prop} \]
+\[ d_{proc}, d_{queue} = 0  \]
+\[ d_{trans} = \frac{L}{R} = \frac{12Kb}{1Gbps} = 12\mu s \]
+\[ d_{prop} = \frac{d}{s} = \frac{2*10^3}{3*10^8m}  = 6.66\mu s \]
+\[ d_{proc} + d_{queue} + d_{trans} + d_{prop} = 18.66\mu s = d_{nodal} \]
+
+Total delay of link 1 is 19 microseconds
+\pagebreak
+
+\item
+\[ d_{nodal} = d_1 + d_2 + d_3 \]
+\[ d_2 =  \frac{12Kb}{1Mb} + \frac{10^6}{3*10^8} = 3.33ms \]
+\[ d_3 = \frac{12Kb}{10Mb} + \frac{2*10^3}{3*10^8} = 1.20666ms \]
+\[ 0.018666ms + 3.33333ms + 1.20666ms = 4.72665ms = d_{nodal} \]
+
+Total delay from source to host is 4.7 miliseconds
+\end{enumerate}
+
+
+\subsection*{Problem 3}
+From top to bottom, the network protocol layers for the five layer internet protocol stack are the Application Layer, the Transport Layer, the Network layer, the Link layer, and the Physical Layer \\
+
+Examples of protocols in each layer: 
+\begin{itemize}
+\item \bd{Application} - HTTP, or Hypertext Transfer Protocol, provides web document requests and transfers between hosts
+\item \bd{Transport} - UDP, or User Datagram Protocol, provides low latency, loss tolerant connections between hosts
+\item \bd{Network} - IP, or Internet Protocol, is the set of rules and operations for addressing and routing data to hosts in an internet network
+\item \bd{Link} - DSL, or Digital Subscriber Line, is used to send digital datagrams as analog data frames over telephone lines
+\item \bd{Physical} - Ethernet - Fiber Optics is one of the most reliable and fastest transport methods for an individual bit over a physical medium
+\end{itemize}
+
+\pagebreak
+
+\subsection*{Problem 4}
+\begin{enumerate}[a)]
+\item HTTP is described as a pull protocol because the reason for the connection is the client wants data from the server. So the client is said to "pull" the information since it initiates the connection to recieve data from the server
+\item SMTP is described as a push protcol because the reason for the connection is the sender's mail server (acting as the client in this case) wants to give data to the reciever's mail server. So the client is said to "push" the information since it initiates the connection to send data to the mail server
+\end{enumerate}
+
+\subsection*{Problem 5}
+\begin{enumerate}
+\item Source port number of packet C is 6124, destination port number is 6245
+\item Source port number of packet D is 6773, destination port number is 6245
+\item Source port number of packet A is 5065, destination port number is 6245
+\item Source port number of packet B is 6245, destination port number is 5065
+\end{enumerate}
+
+\pagebreak
+
+\subsection*{Problem 6}
+\begin{enumerate}
+\item Public, the addresses are still allocated by the ISP instead of something like a NAT. Also, the addresses do not fall under the special IP addresses reserved for private networks
+\item Assuming two addresses are reserved for special use (broadcast address and subnet ID) and the entire address space is used for one subnet, 9 avaliable bits in the subnet will allow there to be 510 unique host interfaces (512 unique addresses - 2 reserved)
+\item Subnet Address of subnet A in CIDR notation (after giving subnet B 172.23.164.47/26) is 172.23.164.147/24
+\item Broadcast Address of subnet A is 172.23.164.255
+\item Starting Address of subnet A avaliable to hosts is 172.23.164.65 (172.23.164.64 is given to subnet ID)
+\end{enumerate}
+
+\subsection*{Bonus}
+\begin{enumerate}
+\item Sequence number of segement sent at t=1 is 199
+\item Sequence number of segement sent at t=5 is 2403
+\item Value of ACK sent at t=11 is 750
+\item Sequence number of segement sent at t=16 is 750
+\end{enumerate}
+
+\end{document}

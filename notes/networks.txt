@@ -378,7 +378,10 @@ Security Socket Layer (SSL):
 SSL is implemented in the application layer
 
 
-
+Total delay = nodal dealy
+nodal delay = processing delay + queuing delay + transmission delay + propogation delay
+transmission delay = L/R = packet length/transmission rate
+propogation dealy = d/s = link length/propogation speed
 
 
 Web and HTTP
