@@ -301,9 +301,10 @@ May become illegal if the real world relationship changes
 
 A partial functional dependency is a functional dependency between an non key attribute and part, but not all, of the primary key
 
+A transitive functional dependency is a functional dependency between two or more non-key attributes
 
 Peter Pin-Shan Chen developed ER modeling for database design in the 70s
-Edgar F Codd invented the relational model for database management
+Edgar F Codd invented the relational model for database management (ER Diagram)
 
 Tuples with a NULL value for an attribute that is involved in the join condition of an inner join are dropped, but not an outer join
 
@@ -315,4 +316,32 @@ WHERE EXISTS evaluates as a boolean
 Aggregate functions are used to get summary statistics across all the resulting rows of a query (EX: AVG, COUNT, MAX, MIN, SUM)
 ROUND and TRUNC deal with aggregate functions and precision (number of digits after the decimal)
 
-What is semi-join?dr
+Group By/Having can be combined with aggregate functions to get summary statistics for specific subgroups
+
+Case statements, which are similar to how C++ switch case works
+
+Projection means choosing which columns are returned, selection is which rows are returned
+
+WITH creates a temporary table that disappears after the query runs
+Virtual tables have no physical form and exist in memory
+Base tables are physically stored in the database
+Defining table are base tables used in virtual table (view) building
+A materialized view will not create a virtual table based on provided criteria
+
+
+Superkey is a subest of attributes with the property that no two tuples have the same values in their superkey
+A key is a subest of a superkey such that removing its value from the superkey makes the superkey no longer a superkey
+A candidate key is each key of a relation that has more than 1 key
+A primary key is the designated canidate key used to identify tuples
+A unique key is a candidate key that is not a primary key
+A prime attribute is a member of a candidate key
+
+
+1NF has single atomic values, eliminates duplicate tuples, multivalued attributres, composite attributes, and nested relations
+2NF is 1NF + every non prime attribute in the relation is fully functionally dependent on the primary key (Remove partial functional dependencies)
+3NF is 2NF + no non-prime attribute of R is transitivley dependent on the primary key (Remove transitive functional dependencies)
+BCNF is a 3NF + whenever a nontrivial functional dependency X -> A holds in R, then X is a superkey of R
+4NF is BCNF + you seperate a multivalued relation into its own table with two columns and a primary key comprised of a combined key of both columns
+
+
+
