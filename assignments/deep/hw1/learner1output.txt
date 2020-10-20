@@ -1,0 +1,13 @@
+CS-5001: HW#1 
+Programmer: Mitchell Meier
+
+TRAINING: 
+Using learning rate eta = 1e-06
+Using 100000 iterations. 
+
+OUTPUT: 
+w0 = 23.569842179422583
+w1 = 2.9824460081902453
+
+VALIDATION 
+Sum-of-Squares Error = 28.694554985897106

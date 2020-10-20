@@ -26,6 +26,9 @@ def parse_input(inp):
 def format_output(eta, loops, w0, w1, error):
 	out = "CS-5001: HW#1 \nProgrammer: Mitchell Meier\n\nTRAINING: \nUsing learning rate eta = " + str(eta) + "\nUsing " + str(loops) + " iterations. \n\nOUTPUT: \nw0 = " + str(w0) + "\nw1 = " + str(w1) + "\n\nVALIDATION \nSum-of-Squares Error = " + str(error)
 	print(out)
+	writer = open("learner1output.txt", "w")
+	writer.write(out)
+	writer.close()
 
 
 def y_hat(weight0, weight1, inp):
