@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import secrets
 
 class Data:
@@ -21,33 +23,35 @@ def parse_input(inp):
 		ret.append(Data(int(cks), int(chs)))
 	return ret
 
+def format_output(eta, loops, w0, w1, error):
+	out = "CS-5001: HW#1 \nProgrammer: Mitchell Meier\n\nTRAINING: \nUsing learning rate eta = " + str(eta) + "\nUsing " + str(loops) + " iterations. \n\nOUTPUT: \nw0 = " + str(w0) + "\nw1 = " + str(w1) + "\n\nVALIDATION \nSum-of-Squares Error = " + str(error)
+	print(out)
+
+
 def y_hat(weight0, weight1, inp):
 	return weight0 + (weight1 * inp)
 
+def learn(eta, loops, t, v):
+	w0 = secrets.randbelow(50) + 1
+	w1 = secrets.randbelow(50) + 1
 
-training = parse_input('chocodata.txt')
-validation = parse_input('chocovalid.txt')
+	for i in range(loops):
+		for k in t:
+			cap = y_hat(w0, w1, k.cookies)
+			delta = k.chips - cap
+			w0 = w0 + eta * delta
+			w1 = w1 + eta * delta * k.chips
+
+	err = 0
+	for i in v:
+		err += (i.chips - y_hat(w0, w1, i.cookies)) ** 2
+
+	format_output(eta, loops, w0, w1, err)
 
 
 #Main
-eta = 0.00001
+training = parse_input('chocodata.txt')
+validation = parse_input('chocovalid.txt')
 
-w0 = secrets.randbelow(50) + 1
-w1 = secrets.randbelow(50) + 1
-
-
-for i in range(1000):
-	for k in training:
-		cap = y_hat(w0, w1, k.cookies)
-		delta = k.chips - cap
-		w0 = w0 + eta * delta * k.chips
-		w1 = w1 + eta * delta * k.chips
-
-print(w0)
-print(w1)
-
-current = 0
-for i in validation:
-	current += (i.chips - y_hat(w0, w1, i.cookies)) ** 2
-
-print(current)
+#Chosen eta as 1*10^-6, and iterations at 1*10^5
+learn(0.000001, 100000, training, validation)
