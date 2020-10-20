@@ -160,3 +160,14 @@ The distribution of a random variable consits of the set of all possible values 
 
 Probability Mass Function (pmf):
 See handwritten notes (and for cumulative distribution function cdfls)
+
+
+
+
+Unit 2:
+
+A random variable is continious if it can take on any value in an interval. The counterpart of a discrete variable, which can only be a subset of values (usually whole numbers)
+Probabilites for continuous random variables are given by areas under a curve of their respective probability density functions (pdf), denoted f(x)
+
+CDF = Cumulative Distribution Function of a random variable, describes the distribution of random variables
+
