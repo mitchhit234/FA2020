@@ -1102,27 +1102,3 @@ Examples of flow table actions are on page 388
 
 Chapter 5 Network Layer Control Plane
 
-
-
-
-Presentation:
-
-I.C. : I've built the base of the peer to peer network, which includes implementing methods for identifying peers, connecting peers, and sending information between peers
-
-
-Flow Chart : 
-
-For our flow chart, we decided to combine the sender's flow chart and the reciever's flow chart into one flow chart. This flowchart shows the order of operations for each peer on the network, since the peers will be acting as both senders and recievers in our network
-
-As for the variables in our flow chart, we can break them into two groups. The first group of variables are the blockchain variables. The blockchain variables include each block's index, timestamp, hash, previous hash, transaction, and nonce. Sending these variables between hosts is the primary goal of our network interface
-
-To send these variables between peers, we keep track of some network variables that aid the peer to peer system. Each peer's key pair and host list aid in authenticating peers and connecting them to other peers
-
-
-So our flow chart starts out here on the top left where a peer will decide to connect to the netowrk. When it tries to connect, it will reference its list of identified peers and send a synchronize request to each other peer until it finds one online and establishes a connection with it
-Once a connection is established, our local host will ask for that peer's previous hash, and compares it with our latest block hash. If we find that this peer's previous hash equals our latest block's hash, that tells us that this peer has a valid blockchain that is one block ahead of ours. So now we ask the peer for their entire latest block, and append that block to our local blockchain.
-If these hashes do not equal each other, however, then we have to identify why. First, we check to see if the peer's blockchain is longer than ours by comparing block indexes. If we see the peer's blockchain is the same length or shorter, there is nothing to be done. Our local blockchain is fine and up to date. However, if the peer's blockchain is longer, then we need to request their entire block and see ourselves if it is valid. If it is, we replace our local blockchain with the peer's longer blockchain. Otherwise, we just ignore it.
-And finally, after our blockchain has been updated, our host stays active on the network and listens for other peers that are requesting blocks, as well as periodicly ask other peers for potential new blocks
-
-
-For our development enviornment, we used rust and libp2p, which we'll discuss in our next slide.
