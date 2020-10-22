@@ -171,3 +171,13 @@ Probabilites for continuous random variables are given by areas under a curve of
 
 CDF = Cumulative Distribution Function of a random variable, describes the distribution of random variables
 
+
+
+Exponential Distribution is used to represent the lifetime of certain types of equipment or represent the elapsed time before an event occurs
+Exponentaiol distribution does not remember how long we have been waiting, and cannot feel that an event is due because we have waited s amount of time already. Waiting time is constantly "restarting" (Memoryless Property)
+
+Weibull Distribution is often used to model the time until failure of many different physical systems
+Parameters in this distribution allow engineers to account wear and tear and other factors
+
+If a continuous random variable X with mean mu and variance theata squared has the following pdf (in paper notes), then we say X is normally distributed or X follows a normal distribution (or Gaussian distribution)
+Most important and commonly used distribution used in statistics, it can model many continuous populations well
