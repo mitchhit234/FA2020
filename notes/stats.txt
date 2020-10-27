@@ -168,7 +168,6 @@ Unit 2:
 
 A random variable is continious if it can take on any value in an interval. The counterpart of a discrete variable, which can only be a subset of values (usually whole numbers)
 Probabilites for continuous random variables are given by areas under a curve of their respective probability density functions (pdf), denoted f(x)
-
 CDF = Cumulative Distribution Function of a random variable, describes the distribution of random variables
 
 
@@ -176,8 +175,18 @@ CDF = Cumulative Distribution Function of a random variable, describes the distr
 Exponential Distribution is used to represent the lifetime of certain types of equipment or represent the elapsed time before an event occurs
 Exponentaiol distribution does not remember how long we have been waiting, and cannot feel that an event is due because we have waited s amount of time already. Waiting time is constantly "restarting" (Memoryless Property)
 
+
+
 Weibull Distribution is often used to model the time until failure of many different physical systems
 Parameters in this distribution allow engineers to account wear and tear and other factors
 
+
+
 If a continuous random variable X with mean mu and variance theata squared has the following pdf (in paper notes), then we say X is normally distributed or X follows a normal distribution (or Gaussian distribution)
 Most important and commonly used distribution used in statistics, it can model many continuous populations well
+
+A normal distribution is always symmetric around its mean
+Its graph has a bell shaped curve with one peak
+
+Z = Standard normal random variable
+Mean = 0, variance = 1
