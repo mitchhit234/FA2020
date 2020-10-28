@@ -190,3 +190,21 @@ Its graph has a bell shaped curve with one peak
 
 Z = Standard normal random variable
 Mean = 0, variance = 1
+
+
+
+Statistical inference is divided into two major areas, parameter estimation and hypothesis testing
+
+A statistical hypothesis is a claim or assertion about the value of a single or several population parameters
+A null hypothesis is a claim about a population parameter that is assumed to be true until declared false (cannot be proven true, but can be assumed true)
+Alternative hypothesis is the hypothesis we want to establish by the end of our testing. Strong evidence is needed to belieive it to be true
+
+A statistical test will either reject H_0 or fail to reject H_0
+
+Type 1 error: rejected H_0 when H_0 is true (false positive)
+Type 2 error: fail to reject H_0 when H_0 is false (false negative)
+Confidence level = 1 - alpha
+Power = 1 - beta
+
+P value is the probability of observing data as extreme or more extreme than that which was observed. It is also the smallest significance level at which the null hypothesis would be rejected for the given data
+If p value is less than a, reject H_0, otherwise fail to reject H_0
