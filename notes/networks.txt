@@ -1102,3 +1102,22 @@ Examples of flow table actions are on page 388
 
 Chapter 5 Network Layer Control Plane
 
+
+Routing Algorithms
+
+A centralized routing algorithm computes the least cost path between a source and destination using complete knowledge about the network. Often refered to as link state algorithms when they have global knowledge of the entire network
+A decentralized routing algorithm has the calculation of the least cost path carried out in an iterative, distributed manner by each router. No node has complete information about the entire network. Instead, neighboring nodes communicate with each other to find the shortest path route
+
+Static routing algorithms change very slowly over time (only due to manual intervention), while dynamic routing algorithms change routing paths based on network traffic loads/topology change
+
+In a load sensitive algorithm, edge (link) costs vary dynamically to reflect network congestion. Load insensitive algorithms do not change link costs based on network congestion
+
+
+The Link State Routing Algorithm
+
+A link state broadcast algorithm involves all nodes in a network broadcasting link state packets to each other, with each link-state packet containing the idenities and costs of all its attached links. This gives each node in the network a global view of the entire network
+An example of a link state routing algorithm is Dijkstra's Algorithm (pg 408 and paper notes)
+
+
+The Distance Vector Routing Algorithm
+
