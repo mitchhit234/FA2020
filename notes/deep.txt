@@ -370,10 +370,12 @@ update w after some number of examples (number can be changed as well)
 
 
 
+Logistic Classification
 
-Classification
+For the classification problem, given a new set of examples, the aim is to classify examples as beloning to Y or not belonging to Y (boolean decision)
+Different from regression, with deals with continuous y instead of a discrete y
 
-Squashing Functions
+ Squashing functions will be used to get these continuous outputs down to the range of y [0,1]
 
 Step Function
 1 if x > 0, otherwise 0
@@ -382,3 +384,25 @@ Sigmoid (logistic) Function
 1/(1+e^(-x))
 
 
+Neural Model
+
+McCulloch Pits Neural Model was the first mathmatiecal model of a neural network
+
+Perception training rule
+1. pick example from training set
+2. if perception predicts example's outputs, do nothing
+3. if the perception predicts a 0 but the example's output is a 1, add the input vector to the weight vector
+4. if the perception predicts a 1 but the example's output is a 0, subtract the input vector from the weight
+
+Limitations of perceptrons
+Training is computationally expensive
+Incapable of learning some functions (XOR, EQ.)
+
+
+
+Feed Forward Neural Networks
+Connecting the output of a neuron to the input of another neuron
+Each connection has a weight attached to it
+Each layer is fully connected to the next layer
+No inter-layer communication
+Information flows in one direction, input to output (left to right)
