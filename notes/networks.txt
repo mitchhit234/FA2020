@@ -1146,7 +1146,7 @@ Routing Among the ISPs: BGP
 Inter-autonomous system routing protocols are what transfer data between two different autonomous systems
 All ASs must run the same inter-system routing protocol for this to work. For the internet, this protocol is called Border Gateway Protocol (BGP)
 BGP is up there in most important internet protocols right along with IP
-It is a decentralized, asynchronous, distance vector protocl (like Bellman's algorithm discussed earlier)
+It is a decentralized, asynchronous, distance vector protocol (like Bellman's algorithm discussed earlier)
 
 BGP provides each router the means to obtain prefix reachability information from neighboring ASs and determine the best routes to those prefixes
 
@@ -1165,7 +1165,21 @@ The AS-PATH attribute contains the list of ASs through which the advertisement h
 
 Hot Potato Routing
 
+The goal of hot potato routing is to get packets out of one's own AS as quickly as possible, without worrying about the cost of the remaining links left to the packets destination
 
+
+Route Selection Algorithm (BGP's)
+
+For any given destination prefix, the input to BGP's route selection algorithm is the sret of all routes to that prefix that have been learned by the router
+
+Routes with higher local preference values (configed by system admins) will be favored over others. From these high preference routes, the route with the shortest AS-PATH is selected (least amount of ASs traveled through, distance vector algorithm). If there is still ties, hot potato routing is then used
+
+
+
+
+IP-Anycast
+
+IP-Anycast takes advantage of the internet's BGP. It is the process of giving multipule different servers geographicly distributed the same IP address, then using BGP's routing protocl to have clients communicate with the server closest to them (fewset number of ASs away). Also used to help DNS server connections (there are actually only 13 root DNS IP addresses, but over thousnads of actual servers spread out across the world)
 
 
 
