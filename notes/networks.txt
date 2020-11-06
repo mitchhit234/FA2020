@@ -1121,3 +1121,46 @@ An example of a link state routing algorithm is Dijkstra's Algorithm (pg 408 and
 
 The Distance Vector Routing Algorithm
 
+This algorithm is iterative, asynchronous, and distributed. Each node recieves information from one of its neighbors, performs a calculation, and distributes the results of its calculations back to its neighbor
+This way costs/distances are constantly updated and the forwarding table values slowly converge to the optimal paths (pg 413)
+
+Distance vector differs from an LS algorithm in the fact that it is not centeralized. It does not need global information of the network to get started, only its costs to its neighbor nodes
+
+A routing loop is where there is an error in cost evaluations and two nodes try to route to a 3rd node through each other, resulting in an endless loop
+Count to infinity problem is where a routing loop takes a long time to resolve since it will naturally increment to the correct cost slowly
+
+Poisoned reverse is a technique used to avoid routing loops. If a node x uses y to get to z in its shortest path algorithm, then it will advertise its cost to z as infinity to node y only. Since y believes x has no path to z, it will never attempt to route itself to z through x (and thus will not create a loop)
+
+Comparissons between DV and LS on page 419
+
+
+Intra-AS ROuting in the Internet: OSPF
+
+To combat scaling and provide administrative autonomy, autonomous systems (ASs) are used by organizations. All routers in an AS run the same routing algorithm and are addressable by their collective AS address (also given out by the ICANN, just like ISPs)
+
+Open Shortest Path First (OSPF) is an open source link state protocol that uses flooding of link-state information and a Dijkstra's least cost path algorithm. Each router under an AS that runs OSPF contstructs a topological map of the entore autonomous system. Each router then runs its own calculations to determine the shortest path to all subnets in the AS. 
+
+
+Routing Among the ISPs: BGP
+
+Inter-autonomous system routing protocols are what transfer data between two different autonomous systems
+All ASs must run the same inter-system routing protocol for this to work. For the internet, this protocol is called Border Gateway Protocol (BGP)
+BGP is up there in most important internet protocols right along with IP
+It is a decentralized, asynchronous, distance vector protocl (like Bellman's algorithm discussed earlier)
+
+BGP provides each router the means to obtain prefix reachability information from neighboring ASs and determine the best routes to those prefixes
+
+In BGP, pairs of routers communicate over TCP connections via port 179
+
+A gateway router is a router on the edge of an AS that connects to the "outside world", and an internal router is a router which connects directly to only hosts in its own AS
+
+A BGP connection between gateway routers of different AS's is called an external BGP (eBGP) connection, whilst one encapsulated in an AS is called an internal BGP (iBGP) connection
+
+
+Involved with a subnet prefix in a BGP advertisement are several BGP attributes. The attributes and and prefix together are called a route
+
+The AS-PATH attribute contains the list of ASs through which the advertisement has passed, and the NEXT-HOP attribute is the value of the IP address that stands at the beggining of the AS-PATH
+
+
+
+Hot Potato Routing
