@@ -131,12 +131,21 @@ $H_1 : \mu \neq 8$
 With a sample size of $n = 25$ \\
 sample mean of $\bar{x} = 8$ \\
 sample standard deviation of $s = 2.5$ \\ 
-and $90$\% confidence interval, our JMP output is as follows: \\
+and $90$\% confidence interval, our JMP output is as follows:
 
+\begin{figure}[h]
+\centering
+\includegraphics{exam2/2i.png}
+\end{figure}
+ 
 \item
-Conclusion
+We have sufficent evidence to conclude that the average time spent watching TV each week by Missouri S\&T students is not equal to 8 hours, since 8 hours does not fall in the range of our confidence interval. Therefore, we have sufficent evidence to reject $H_0$
+
 
 \end{enumerate}
+
+\pagebreak
+
 \begin{enumerate}[1.]
 
 \item
@@ -151,10 +160,15 @@ $H_1 : \mu \neq 4$
 With a sample size of $n = 16$ \\
 sample mean of $\bar{x} = 4.1$ \\
 population standard deviation of $\sigma = 0.2$ \\ 
-and $90$\% confidence interval, our JMP output is as follows: \\
+and $90$\% confidence interval, our JMP output is as follows: 
+
+\begin{figure}[h]
+\centering
+\includegraphics{exam2/2ii.png}
+\end{figure}
 
 \item
-Conclusion
+We have sufficent evidence to conclude that the battery life of an artifical heart is not equal to 4 hours, since 4 hours does not fall in the range of our confidence interval. Therefore, we have sufficent evidence to reject $H_0$
 
 \end{enumerate}
 
@@ -163,5 +177,63 @@ Conclusion
 \pagebreak
 
 \subsection*{Problem 3}
+
+\begin{enumerate}[(a)]
+
+\item
+
+\[ 
+f(x,\theta) = \frac{x}{\theta^2}e^{\frac{-x^2}{2\theta^2}}, x>0
+\]
+
+\[
+\text{pdf of x } = \int_{0}^{\infty}\frac{x}{\theta^2}e^{\frac{-x^2}{2\theta^2}}dx
+\]
+
+\[
+u = \frac{-x^2}{2\theta^2}, du = \frac{-x}{\theta^2}dx
+\]
+
+\[
+- \int_{0}^{\infty}e^u du = -e^u + C = -e^{\frac{-x^2}{2\theta^2}} 
+\]
+
+\[
+-e^{\frac{-\infty^2}{2\theta^2}} - -e^{\frac{0^2}{2\theta^2}} = 0 - (-1) = 1
+\]
+
+Since the integral of our pdf is equal to 1, this is a valid pdf
+
+
+\item
+
+\[
+F(x) = 1 - e^{(\frac{-x}{\alpha})^\beta}
+\]
+
+\[
+F(x) = 1 - e^{-x^\beta}, \text{since }  \alpha = 1
+\]
+
+\[
+F(x) = 1 - e^{-x^2}, \text{since }  \beta = 2
+\]
+
+
+\item
+
+\[
+\mu = 1 \gamma(1+\frac{1}{2}) = \gamma{\frac{3}{2}} = 0.886
+\]
+
+\[
+\sigma^2 = 1^2 \gamma(1 + \frac{2}{2} - 1^2 (\gamma{1 + \frac{1}{2}})^2
+\]
+
+\[
+\sigma^2 = \gamma(2) - (\gamma(\frac{3}{2}))^2 = 1 - 0.886 = 0.214
+\]
+
+\end{enumerate}
 
 \end{document}
