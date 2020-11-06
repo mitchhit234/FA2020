@@ -1164,3 +1164,14 @@ The AS-PATH attribute contains the list of ASs through which the advertisement h
 
 
 Hot Potato Routing
+
+
+
+
+
+
+
+
+
+
+
