@@ -27,6 +27,60 @@
 \begin{enumerate}
 
 \item
+\bd{Forwarding} is the process moving an arriving datagram from its arrival point (input link) to the appropriate output link. It is the general process a single router's role in passing a datagram along the correct path \\
+
+\bd{Routing} is the process of determining a datagram's path from sending host to receiving host. The routing algorithm will determine which routers the datagram will pass through and in what order \\
+
+\item
+The \bd{Data Plane} is in charge of determining how datagrams are forwarded inside a given router. It involves receiving data from input links, converting this data into link layer packets, determining which of its output ports the data needs to be forwarded to by referencing its forwarding table (if it is to be forwarded at all), and sends the data to the determined output link \\
+
+The \bd{Control Plane} controls the routing of datagrams. This can be done via per-router control, where a routing algorithm and forwarding table are all calculated within each router, or it can be done via a logically centralized routing controller, which distributes forwarding tables to each router. The goal of the routing is to determine "best" routes from a sender to reciever. The term best is usually determined by the lowest cost path, and the cost of a path can be dependent on many different configurable factors \\
+
+
+\item
+\bd{Destination Based Forwarding} is when a router will make its decision on what output link to forward a packet too completley based on the packet's final destination \\
+
+\bd{Generalized Forwarding} is when a router can take in more than just the packet's final destination as inputs for determining what output link to forward the packet too. This can include factors such as the application/transport protocols the packet is using, if the packet is flagged as important/unimportant, and/or if there exists congestion in possible paths \\
+
+\item
+The IP addresses are most likely assigned to the five PC's automatically using DHCP (Dynamic Host Configuration Protocol). The wireless router is likely to include a DHCP server that will automatically offer temporary IP addresses to each PC. The wireless router will have to use NAT since it itself was only designated one IP address, therefore it has no unique addresses to give to the PCs. The PCs will be given designated local IP addresses by the router's DHCP server \\
+
+\item
+\bd{Link State} routing algorithms are centralized routing algorithms that compute paths using complete knowledge of the network. Each node in the network has global knowledge of the network from each node broadcasting link state packets to each other \\
+
+\bd{Distance Vector} routing algorithms are iterative, asynchronous, and decentralized. Each node recieves information from one of its neighbors, performs a calculation, and distributes its results back to its neighbor. Over time, a node will gradually calculate its least cost path to the other nodes. TDistance vector differs from link state in the fact that is is not centeralized; each node does not need global information of the network, only its costs to neighboring nodes \\
+
+Both algorithms achieve the same goal in determining the cost of links in the newtork, which then helps determine the least cost paths between nodes \\
+
+\item
+Yes, using the same intra-AS routing (such as all internet AS's using BGP) is essential because autonomous systems would otherwise not be able to communicate with each other if they were all using different protocols. It is ok for the routing protocls inside each AS to be different, but when communicating between AS's, the compatibility of all these different protocols would be unreliable/difficult to implement on a case by case basis. That is why it is a much better solution for each AS to use the same intra-AS routing protocl \\
+
+\item
+A new routing protocl in the SDN network would be implemented in the SDN's network-control application layer \\
+
+\item
+\begin{enumerate}[(a)]
+\item
+The exact cost of link X can not be determined, so the answer is \bd{'n/a'}. It is proven to be greater than 3 however, based on our next answer for link Y \\
+
+\item
+The exact cost of link Y is \bd{3}, since our table shows that the shortest distance between nodes V and X must be 3, and there is no other given route that can support that low of a cost. Now that we know link Y is 3, we are able to at least show that link X must be greater than 3, since the shortest path from node V to Y is given to be six, meaning the path V to W to Y cant be less than six, and link X can not be less than 4
+
+\end{enumerate}
+
+\item
+\begin{equation*}
+\begin{aligned}
+u \rightarrow u = 0 \\
+u \rightarrow v = 9 \\
+u \rightarrow w = 14 \\
+u \rightarrow x = 10 \\
+u \rightarrow y = 15 \\
+\end{aligned}
+\end{equation*}
+
+\item
+A \bd{routing loop} can occur when link costs increase, when two nodes continually try to reach a 3rd node through each other, without realising that a link cost has changed and that path they took through that node is no longer viable. Subsequently, the path to convergence once this happens can take a very long time
 
 \end{enumerate}
 
