@@ -1183,6 +1183,55 @@ IP-Anycast takes advantage of the internet's BGP. It is the process of giving mu
 
 
 
+Routing Policy
+
+A multi-homed access ISP is an ISP that is connected to a network by more than one provider
+
+A rule of thumb for provider networks is that any traffic flowing across an ISPs backbone must have either a desintation or source within that ISP's network. If not, that means that some other ISP is passing off their duty to them to give the packet a "free ride"
+
+
+Software Defined Networking in the Control Plane
+
+Four key characterisitcs of a SDN architecture are:
+1. Flow based forwarding - forwarding decisions based on packet information (header fields)
+2. Seperation of data plane and control plane
+3. Network control functions - monitor and control key network functions
+4. A programmable network - APIs that calculate routing, packet decisions, etc
+
+
+A SDN's controllers functionality can be divided into three layers:
+1. Communicating layer - communicating between the SDN controller and network devices. Know as the controllers southbound interface, most controllers use OpenFlow for this communication
+2. Network wide state-management layer - gathers and stores up to date information about network hosts, links, switches to determine flow tables  for the various controlled devices
+3. Interface with the network control application layer - know as the controller's northbound interface, allows it to communicate with its network control applications, which read/write to network state and flow tables in the management layer
+
+
+OpenFlow Protocol
+
+OpenFlow involves communication with the SDN controller and a SDN controlled switch. It uses a TCP connection and defaults to port number 6653
+
+The controller communicates to the switch:
+- Configuration of a switch
+- Modify State to add/delete enteries in a switch's flow table, and set port properties
+- Read State to collect information from a switch's flow table and ports
+- Send Packet to send a specific packet to the switch at a given port
+
+The switch communicates to the controller:
+- Flow Removed, that an entry from its flow table has been removed due to timeout/ modify state message, etc.
+- Port Status which informs the controller of a status change in a port
+- Packet In when a packet arrives but doesn't have a corresponding flow table entry, is sent to the controller for additional processing
+
+OpenDayLight and ONOS controllers are some of the most popular open source SDN controllers today
+
+
+
+The Internet Control Message Protocol (ICMP)
+
+Used by hosts and routers to communicate network information between each other
+ICMP messages are carried by datagram payload, just like TCP/UCP is (upper layer protocl number of 1 for header field)
+
+ICMP messages have a type and a code field, and contain the first 8 bytes of the IP datagram that caused the error (for packet recginiton by the sender)
+ICMP code table on pahe 448
+
 
 
 
