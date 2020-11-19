@@ -1269,3 +1269,91 @@ SNMP has evolved through three versions. The newest version, SNMPv3, has more of
 
 
 
+
+
+
+Chapter 6 Link Layer
+
+Two fundamentally different types of link layer channels
+Broadcast channels - connect multipule hosts in wireless LANs, satellite networks, and hybrid fiber coxial cable access networks. Many hosts are connected to the same broadcast communication channel
+Point to point communication link - connection between one physical link, such as two routers, a host and its switch, etc. Use Point to Point Protocol (PPP) for communication
+
+A node is a link layter compatible device, such as hosts, switches, routers, wifi access points, etc.
+A link is the communication channel that connects adjacent nodes along a communication path
+
+Datagrams traveling from sender to reciever must path over each link between nodes on their way. This often involves jumping between wifi, ethernet, etc. Over a given link, a transmitting node encapsulates the datagram in a link layer frame and transmits that frame over said link
+
+
+Services Provide by Link Layer
+
+While the basic service of the link layer is to move a datagram from one node to an adjacent node over a single communication link, it can have a couple other services such as
+Framing - almost all link layer protocols include framing. Encapsulate each datagram within a link layer frame before transmission over a link. Frame includes header fields and data fields
+Link Access - A Medium Access Control (MAC) protocl specifies rules by which a frame is transmitted on a link. Simple for point to point, more complex broadcast channels with multipule nodes on the same link
+Reliable Delivery - often used for channels that are prone to errors, such as WiFi links. Works similary to how TCP reliable delivery does. Considered unnecessary overhead for low bit error links such as fiber, coax, and copper
+Error detection and correction - many link layer protocols implement detection for errors caused by singal attenuation and electromagnetic noise
+
+
+Where Link Layer is Implemented
+
+Link layer is mostly implemented in a network adapter/metwork interface card (NIC)
+A NIC includes a link layer controller that implements framing, link access, error detection, etc.
+Much of the link layer functionalities are implemented in hardware
+NICs have recently gone from PCIe cards to being integrated inside the motherboard
+Some of the link layer functionalities are implemented in software, such as assembling link layer addressing information and and activating NIC hardware, responding to incoming frames, and passing datagrams up to the network layer
+
+
+
+Error Detection and Correction Techniques
+
+Parity check shows basic ideas behind error detection
+Summing methods are more typically used in the transport layer
+Cyclic redundancy checks are more typically used in the link layer
+
+Parity checks involves placing a single bit at the end of a group of data. In an even bit parity scheme, that bit is set to a 0 or 1, whichever results in there being an even number of 1's in the data + extra bit. Same goes for odd parity scheme except for odd number
+This technique can detect error when an odd number of bit errors occur. However, since errors are found to often occur together in clusters. If one of these takes place, the odds of undetected errors can be as high as 50 percent
+In a two dimensional parity scheme, the data is split up into rows and columns, and each row and column calculate their own parity bit. This can allow us to see where an error occurs right down to the index; if a colum 2 and row 3 both have an error, we can most likely deduce that the bit at 2:3 is flipped
+The ablility of a reciever to detect and correct errors is known as forward error correction (FEC)
+
+
+Checksum
+
+The internet checksum is the sum of all bits (treated as 16 bit integers) taken, then converted into the 1's compliment. This is the 16 bit value stored in the segment header for error detection at the transport layer
+The receiver does the same process for all the segements data (including the error detection field), and if its result is not all 1's, an error has occured
+Checksuming methods have little overhead but provide less protection against errors than cyclic redunancy checks. Checksuming has to be less computationaly intensive since its implemented in software
+
+
+Cyclic Redundancy Check (CRC)
+
+CRC codes, or polynomial codes, are widely used in today's computer networks
+With CRC codes, the sender and reciever both agree on a specified bit pattern r+1 know as the generator G. The leftmost bit of G must be 1. Then, when data is being sent, the sender will send an additional r bits and append them to the data, such that d+r % G == 0. Module 2 calcuations without carries or borrows are used, making them computationally simple. 
+International standards have been defined for 8, 12, 16, and 32 bit generators
+This method can detect burst errors up to r bits, and a burst of greater than r bits is detected with a probability of 1 - 0.5^r bits. Can also detect any number of odd bit errors
+
+
+
+Multipule Access Links and Protocols
+
+In broadcast links, when any one node transmits a frame, the channel broadcasts that frame to each other node in the network (such as ethernet and wireless LANs)
+The multipule access problem is the problem where we need to decide how to coordinate the access of multipule sending and recieving nodes on a sharded broadcast channel
+Mulitpule Access Protocls control how nodes regulate their transmission into a shared broadcast channel
+
+When more than two nodes transmit frames at a given time, frames will collide at all the recievers, results in a gargled mess of frames that can not be interpreted
+Multipule Access Protocols generally fall into one of three categories
+Channel Partitioning Protocols
+Random Access Protocols
+Taking Turns Protocols
+
+Desirable traits in a broadcast channel of R throughput
+- When only one node is transmitting, its throughput should be R
+- When M nodes are transmitting, their average throughput should be R/M each
+- The protocol is decentralized
+- Inexpensive to implement
+
+
+Channel Partitoning Protocols
+
+
+
+
+
+
