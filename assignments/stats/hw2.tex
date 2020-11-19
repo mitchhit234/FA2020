@@ -1,0 +1,223 @@
+\documentclass[14pt]{article}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{extsizes}
+\usepackage{titling}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{indentfirst}
+\usepackage{caption}
+
+\addtolength{\leftmargin}{-1in}
+
+\newcommand{\bd}{\textbf}
+
+\setlength{\droptitle}{-5em} 
+
+\title{Homework 2 and 3}
+\author{Mitchell Meier}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+\item
+
+\begin{enumerate}[(a)]
+\item
+
+\begin{align*}
+H_0: P = 0.05 \\[15pt]
+H_1: P < 0.05
+\end{align*}
+
+\item
+\begin{align*}
+& Z_0 = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0 (1 - p_0)}{n}}} \\[15pt]
+& Z_0 = \frac{0.02 - 0.05}{\sqrt{\frac{0.05 (1 - 0.05)}{200}}} \\[15pt]
+& Z_0 = -1.946
+\end{align*}
+
+\item
+\begin{align*}
+& P(Z < -1.95) = 0.0256 \\[15pt]
+& p = 0.0256 \\[15pt]
+& \alpha = 0.05 \\[15pt]
+& p < \alpha \text{ ,therefore reject } H_0
+\end{align*}
+
+\item
+JMP
+
+\item
+\begin{align*}
+& \hat{p} \pm Z_{\alpha / 2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \\[15pt]
+& 0.02 \pm Z_{0.025} * 0.0099 \\[15pt]
+\end{align*}
+95 \% two sided Confidence Interval = (0.0006 - 0.039)
+
+\item
+JMP
+\end{enumerate}
+
+\item
+\begin{enumerate}[(a)]
+\item
+\begin{align*}
+H_0: P = 0.1 \\[15pt]
+H_1: P > 0.1
+\end{align*}
+
+\item
+\begin{align*}
+& Z_0 = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0 (1 - p_0)}{n}}} \\[15pt]
+& Z_0 = \frac{0.08 - 0.1}{\sqrt{\frac{0.1 (1 - 0.1)}{200}}} \\[15pt]
+& Z_0 = -0.943
+\end{align*}
+
+\item
+\begin{align*}
+& P(Z < -0.94) = 0.174 \\[15pt]
+& p = 0.174 \\[15pt]
+& \alpha = 0.05 \\[15pt]
+& p > \alpha \text{ ,therefore fail to reject } H_0
+\end{align*}
+
+\item
+JMP
+
+\item
+\begin{align*}
+& \hat{p} \pm Z_{\alpha / 2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \\[15pt]
+& 0.08 \pm Z_{0.025} * 0.019 \\[15pt]
+& 0.08 \pm 0.0376 \\[15pt]
+\end{align*}
+95 \% two sided Confidence Interval = (0.0424 , 0.1176)
+
+\item
+JMP
+
+\end{enumerate}
+
+\item
+\begin{enumerate}[(a)]
+\item
+\begin{align*}
+H_0: \mu_1 = \mu_2 \\[15pt]
+H_1: \mu_1 \neq \mu_2
+\end{align*}
+
+\item
+\begin{align*}
+& T_0 = \frac{\bar{x_1} - \bar{x_2}}{S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \\[15pt]
+& T_0 = \frac{92.255 - 92.733}{2.70 \sqrt{\frac{1}{8} + \frac{1}{8}}} \\[15pt]
+& T_0 = 0.35
+\end{align*}
+
+\item
+\begin{align*}
+& \text{Degrees of freedom = } 7 \\[15pt]
+& 0.25 < p < 0.4 \\[15pt]
+& p > \alpha \text{, therefore fail to reject } H_0 
+\end{align*}
+
+\item
+N/A
+
+\item
+\begin{align*}
+& (x_1 - x_2) \pm t_{\alpha / 2, n_1 + n_2 -2} S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} \\[15pt]
+& 0.478 \pm 2.145 * 1.35 \\[15pt]
+\end{align*}
+
+95\% two sided Confidence Interval = (-2.42 , 3.37)
+
+\end{enumerate}
+
+\item
+
+\begin{enumerate}[(a)]
+\item
+\begin{align*}
+H_0: \mu_1 = \mu_2 \\[15pt]
+H_1: \mu_1 \neq \mu_2
+\end{align*}
+
+\item
+\begin{align*}
+& T_0 = \frac{\bar{x_1} - \bar{x_2}}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}} \\[15pt]
+& T_0 = \frac{12.5 - 27.5}{\sqrt{\frac{7.63^2}{10} + \frac{15.3^2}{10}}} \\[15pt]
+& T_0 = -2.77
+\end{align*}
+
+\item
+\begin{align*}
+& \text{Degrees of freedom = } 13 \\[15pt]
+& 0.01 < p < 0.02 \\[15pt]
+& p < \alpha \text{, therefore reject } H_0 
+\end{align*}
+
+\item
+N/A
+
+\item
+\begin{align*}
+& (x_1 - x_2) \pm t_{\alpha / 2, n_1 + n_2 -2} S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} \\[15pt]
+& (12.5 - 27.5) \pm t_{0.025,13} S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} \\[15pt]
+& 15 \pm 2.4178 
+\end{align*}
+
+95\% two sided Confidence Interval = (12.58 , 17.42) \\
+$H_0$ is outside the confidence interval, therefore we can reject $H_0$
+
+\end{enumerate}
+
+\item
+\begin{enumerate}[(a)]
+\item
+\begin{align*}
+H_0: \mu_1 = \mu_2 \\[15pt]
+H_1: \mu_1 \neq \mu_2
+\end{align*}
+
+\item
+\begin{align*}
+& T_0 = \frac{\bar{D}}{\frac{S_D}{\sqrt{n}}} \\[15pt]
+& \bar{D} = \frac{\sum_{i=1}^{n} D_i}{n} \\[15pt]
+& \bar{D} = \frac{2.462}{9} = 0.274 \\[15pt]
+& S_D = \sqrt{\frac{0.82 - \frac{2.462^2}{9}}{8}} \\[15pt]
+& S_D = 0.135 \\[15pt]
+& T_0 =\frac{0.274}{\frac{0.135}{\sqrt{9}}} \\[15pt]
+& T_0 = 6.089
+\end{align*}
+
+\item
+\begin{align*}
+& \text{Degrees of freedom = } 8 \\[15pt]
+& p < 0.0005 \\[15pt]
+& p < \alpha \text{, therefore reject } H_0 
+\end{align*}
+
+\item
+N/A
+
+\item
+\begin{align*}
+& \bar{D} \pm t_{\alpha / 2, n-1} * \frac{S_D}{\sqrt{n}} \\[15pt]
+& 0.274 \pm 0.1034
+\end{align*}
+95\% two sided Confidence Interval = (0.17 , 0.38) \\
+$H_0$ is outside the confidence interval, therefore we can reject $H_0$
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
