@@ -1227,13 +1227,44 @@ OpenDayLight and ONOS controllers are some of the most popular open source SDN c
 The Internet Control Message Protocol (ICMP)
 
 Used by hosts and routers to communicate network information between each other
-ICMP messages are carried by datagram payload, just like TCP/UCP is (upper layer protocl number of 1 for header field)
+ICMP messages are carried by datagram payload, just like TCP/UCP is (upper layer protocol number of 1 for header field)
 
 ICMP messages have a type and a code field, and contain the first 8 bytes of the IP datagram that caused the error (for packet recginiton by the sender)
 ICMP code table on pahe 448
 
 
 
+Network Management and SNMP
+
+The key components of the network management framework are
+- The managing server - an application that controls the collection, processing, and analysis of network information. Located in the network operations center (NOC) and heavily interacted with humans
+- Managed device - a piece of networl equpiment that is connected to the managed network. Includes hosts, routers, switches, middlebox, modems, IoT devices, and anything else that is network connected. Usually several managed objects are in each managed device, which are pieces of hardware and/or configuation parameters for hardware/software
+- Management Information Base (MIB) - information from managed devices/objects, specified in a data description language called Structure of Management Information (SMI)
+- Network Management Agent - located in each managed device, communicates with the managing server and takes local actions under the command of the server
+- Network Management Protocl - protocol used between all these devices that provides the capabilities of the network management to monitor, test, poll, configure, analyze, evaluate, and control
+
+
+
+Simple Network Management Protocol (SNMP)
+
+Application layer protocl used to convey network management and control messages between a managing server and managed device
+
+Most common use is a request response scenario, where the managing server sends a request to a SMNP agent (pertaining an MIB object(s)), and that agent takes some action then responds. The agent can also send the server an unsolicited trap message, which it performs whenever an exceptional situation occurs (EX a link interface going up/down)
+
+Seven Type of SNMP messages,  or protocol data units (PDUs), table on pg 452
+Get Request
+Get Next Request
+Get Bulk Request
+Inform Request
+Set Request
+Response
+SNMPv2-Trap
+
+SNMP packet structure on pg 453
+
+SNMP default transport layer protocol is UDP, therefore there is no guarantee a managing server's requests will reach their intended agents
+There is a request ID however that is incremented each time a request is sent to a specific agent, which will help communicate whether packets are being lost
+SNMP has evolved through three versions. The newest version, SNMPv3, has more of a focus on providing additional security and administration capabilities, since SNMP in the past has been insecure, therefore often times only being used for its monitoring capabilites and not its administrative ones
 
 
 
