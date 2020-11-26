@@ -1350,10 +1350,61 @@ Desirable traits in a broadcast channel of R throughput
 - Inexpensive to implement
 
 
+
 Channel Partitoning Protocols
 
+Time Division Multiplexing (TDM) divides transmission time into time frames and further divides each time frame in to N time slots (N = number of nodes on channel). Each node gets to transmit data within their time frame, and these time frames repeat in a set pattern. Eliminates collisions and is equally fair to all nodes
+TDM however can limit a nodes average transmission rate too much if the other nodes arent transmititng data
+
+Frequench Division Multiplexing (FDM) divides the bandwith of the channel among N nodes. It does not require nodes to stop transmitting, but besides that, it has the same drawbacks as TDM
+
+Code Division Multipule Access (CDMA) assigns a different code to each node that the node uses to encode its transmitted data. If done well, this encoding will allow recievers to correctly identify which node that data comes from if that data gets jumbled up
 
 
 
 
+Random Access Protocols
 
+In a random access protocol, when a collison occurs, each node involved in the collision repeadtley retransmits its frame until it goes throught without a hitch. Each node will decide a random independent time to wait before sending their frame, as to avoid more collisions
+
+Slotted ALOHA
+
+Time is divided into slots and all nodes are syncronized so that each node knows when a slot begins. One frame can be transmitted during one slot
+If two or more frames collide in a single slot, both nodes involved in the collision randomly decide when to try resending their frame on a slot by slot basis
+Inefficent at times due to its probability based nature, often times slots can be empty of any frames or have collisions. A successful slot is when exactly one node transmits a frame
+At maximum efficeny (optimal probability value and infinite nodes) the effective transmission rate of a given channel would only be 37% of its maximum
+A decentralized aloha implementation would have half the efficeny of slotted Aloha
+
+Carrier Sense Multipule Access (CSMA)
+
+Nodes interact with each other, listening to see if anyone else is transmitting before transmitting themselves (there is no signal energy entering the adapter from the channel), as well as listens while transmitting to stop if it detects another node transmitting as well
+Collision can still occur due to channel propagation delay, when a node sees the channel quiet and decides to broadcast, unknowing that another node just started broadcasting (it just hasnt reached the node yet)
+
+CSMA/CD is CSMA with collision detection. This means when collision is detected, the nodes involved will stop transmitting their respective frames, to avoid transmitting useless data
+
+The binary exponential backoff algorithm deals with the issue of deciding probability interval values based off the number of nodes sharing a channel and number of previous collisions
+The range for the amount of bit times (time to send 512 bits into the linkfor Ethernet) is doubled each time a collision is detected
+The efficiency of CSMA/CD for ethernet is 
+1/(1+ 5*propogation_delay/transmission_delay)
+Efficeny approaches 1 as propogation delay becomes smaller and transmission rate becomes larger
+
+
+Taking Turns Protocols
+
+Polling protocol involves one master node polling each node in a round robin style format. This prevents empty slots and collision, but introduces polling delay (master node has to take some bandwith/time to poll) and vulnreability to failure if the master node fails
+Token passing protocol has no master node. Rather, nodes pass a "token" between each other in a fixed order, and hold on to that token if it needs to transmit frames, otherwise it immediatley passes it on
+Both these protocols have a maximum number of frames before moving to the next node to avoid hogging of the link
+
+
+
+The Link Layer Protocol for Cable Internet Access
+
+Cable uses all three of the multipule access protocols discussed
+It uses FDM and TDM, random access, and centrally allocated time slots
+A cable access network connects several thousand residental cable modems to a cable modem termination system (CMTS). DOCSIS specifies cable data network architecture and its protocols. FDM divides the downstream and upstream channels into multipule frequency channels. 
+Still, multipule cable modems will share the same frequency, so the CMTS will grant permission to individual cable modems to transmit during specified mini slots (TDM like) via a MAP message. Cable modems, in turn, send mini slot requests when they have data to transmit. When there are collisions with these messages, random access is used to resend
+
+
+
+
+Switched Local Area Networks
