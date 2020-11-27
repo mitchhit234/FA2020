@@ -1457,7 +1457,56 @@ Looking at an example of one Ethernet Technology, 100BASE-T. the number stands f
 Today, most ethernet is different from original bus-topology designs. Now most nodes are connected via point to point segments, removing the possibility of collision and removing the need for CDMA/CD. In switch based LANs, there is actually no need for a MAC protocol
 
 
+
 Link Layer Switches
+
+A link layer switch is transparent to hosts and routers in a subnet, meaning the host/router still addresses a frame to another host/router rather than the switch
+A switch contains a switch table which helps it with filtering (determing whether a frame is to be forwarded or dropped) and forwarding (determing the network interface to which the frame is moved too)
+A switch table includes entries for a MAC addresses, the interface that corresponds with that MAC address (the port), and the time at which this entry was made in the table
+Some modern packet switchers can be configured like routers to forward packets based off IP address rather than MAC address
+
+Given a frame with MAC address y arrives on switch interface x:
+- The switch queries its table for MAC address y. If there is no y in its table, it broadcasts the frame to all interfaces except for x
+- If y is in the switch table and corresponds with x (a device sending something to itself), the switch discards the frame
+- If y is in the switch table and corresponds to a link other than x, the frame is forwarded to that and only that interface
+
+Switches are self learning, meaning they configure their own tables without any need for a network administrator to configure them
+When a switch recieves a frame from an incoming interface, it will store that source MAC address, the accompnying interface, and the current time all in an entry in its table
+An entry is deleted from the table after some time (denoted as the aging time)
+A switch is a plug and play device since it requires no configuration
+They are also full duplex, meaning any switch interface can send and recieve at the same time
+
+Switches have a few advantages over buses or hub based star topoligies:
+- Elimination of collisions due to all the interfaces now being point to point and switches have buffers which allow them to never transmit more than one frame on an interface at any time
+- Heterogenous links, switch isolates one link from another, therefore different links can operate at different speeds yet be perfect compatible in the same switch
+- Management, enhanced security and bug detection are two big benifits that come with network switches, often times a problem due to a failed link is less impactful and easier to track down than it is in other LANs
+
+Sniffing on LAN switches is a bit more difficult since most frames are no longer broadcasted to the entire network. A sniffer can however use a technique called switch poisioning, basically using a bunch of bogus MAC addresses to fill up a switch's switch table, which will result in no more room for legitimate entries and frames being broadcast to everyone
+
+
+Switches vs Routers
+
+The main difference between switches and routers are switches operate at the link layer while routers operate up to the network layer
+Switches benifit over routers by being plug and play and faster processing (because they do not have to process up to the network layer). But they lack some of the features routers provide in preventing cycling, meaning they must be configured in a spanning tree. Also, as a switch network grew, more memory would have to be dedicated on each host for ARP tables, and more ARP traffic would fill the network
+Routers have more in place to stop things such as packet cycling, broadcast storms, and other network attacks partily in thanks to their header fields and firewalls. Routers are also not limited to a spanning tree for this reason. Routers are not plug in play, however, and require more processing overhead than switches
+Traditonally, switches are better for smaller networks of up to a few hundred segments, and a router/switch combination is better for larger networks
+
+
+
+Virtual Local Area Networks (VLANs)
+
+Since modern institutional LANs are often configured hierarchically, sometimes broadcasted information (such as ARP and DHCP) in one section is needlessly sent to another
+Sometimes it is desired to split this up in one physical switch as well
+
+VLANs help remedy these issues. A VLAN enabled switch allows multipule virtual local area networks to be defined over a single physical local area network infrastructure. Hosts within a VLAN act as they would in a normal LAN, but only interact that way with the other hosts in their VLAN. Hosts outside the VLAN are treated like hosts outside a subnet
+For communication between 2 VLANs on a single switch, normaly the data would be passed from a host on VLAN 1 to the switch's VLAN 1 interface, onto a router, then back to that physical switch but on VLAN 2's interface. Some VLAN capable switches have that router function built in
+VLAN trunking is a scalable approach to interconnect VLAN switches. The IEEE defined an extended ethernet frame format, 802.1Q, to help switches identify which VLAN  a frame came from when that frame comes from a switch with 2 or more VLANs. This frame is the standard ethernet frame outside of a 4 byte VLAN tag added into the header that carries the identiy of the VLAN which the frame belongs too
+VLANs outside of being based on port, can also be based off MAC address in MAC based VLANs. They can also be defined on network layer protocols
+
+
+Link Virtualization
+
+
 
 
 
