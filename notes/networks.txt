@@ -1407,4 +1407,58 @@ Still, multipule cable modems will share the same frequency, so the CMTS will gr
 
 
 
+
 Switched Local Area Networks
+
+Host and routers, in addition to having network layer addresses (such as an IP number), also have a link layer address. Some switches operate only at the link layer, meaning they only have link layer addresses (and only switch link layer frames)
+Address Resolution Protocol (ARP) provides the mechanisim to translate IP addresses to link layer addresses
+
+Media Access Control (MAC) Addresses
+
+A link layer address is addressed as a LAN address, physical address, or MAC address
+For most LANs, a MAC address is 6 bytes long, giving 2^48 possible MAC addresses
+No two network interfaces have the same MAC address. The institue of Electrical and Electronics Engineers (IEEE) manage the address space. When a company wants to manufacture adapters, it purchases a chunk of the the address space consisting of 2^24 address, where the first 24 bits are fixed and the last 24 bits are used to create unique combinations
+Unlike IP addresses, MAC addresses are permanent and persist on said node no matter what network they are in/are moved too
+A link layer switch occassionally (a wifi network always) broadcasts an incoming frame onto all of its interfaces, thus the receiving adapter will check the header of an incoming frame and see if the frames destination MAC address matches its MAC address. If it does not, the frame is discarded
+When the sending adapter does want all other adapters on the LAN to see/process the frame, it sends a special MAC broadcast address (all 1 bits for ethernet and 802.11)
+
+Address Resolution Protocol (ARP)
+
+ARP works very similar to DNS. It is address translation, given a specific IP, ARP will return the corresponding MAC address do be used in a link layer frame. ARP only works for IPs within a given subset
+All hosts and routers have an ARP table in their memory. Entries in the table are usually temporary (about 20 minutes). To make new entries in the table, a sender sends out an ARP packet which is sent out to the MAC broadcast address in order to query every node on the network for their MAC addresses. Only the node whos IP address is listed in the frame's payload will send a response ARP packet back listing its MAC Address
+ARP is plug and play, and nodes that leave the subnet are eventually deleted from tables due to the TTL attribute
+
+To summarize MAC addresses, they are used to send link layer frames from one node to another. A correct MAC address will signal the node to process that frame up to the network layer (and into a datagram). Thats why a MAC address can not be initally set as the destination's MAC address as the sender (if the destination exists beyond its subnet). The MAC address destination needs to be the next point where the link layer frame is passed up to the network layer, which would be at whatever router the frame is to go to next
+
+Ethernet
+
+Most prevelant LAN technology, was invented in the mid 1970s and has evolved over time
+Was the first widely deployed LAN technology, and least expensive out of other solutions (token ring, FDDI, ATM)
+Original ethernet used a coaxial bus to interconnect nodes, and that bus topolgy persisted to the mid 1990s (broadvast LAN, frames travled too and were processed by all adapters connected to the bus)
+By late 1990s, most ethernet LANs used hub-based star topology. Host and routers are directly connected to a hub with twisted pair copper wire. A hub is a physical layer device that acts on bits instead of frames. It acted as a signal booster that boosted the bit onto all other interfaces
+In early 2000s the hub was replaced with an ethernet switch. Switches are collision-less, and can store/forward packets, but unlike routers, they do not operate at the network layer (do not process frames into datagrams)
+
+
+Ethernet Frame Structure
+
+The ethernet frame structure contains 6 fields
+- Data Field is between 46 and 1500 bytes (can be up to 9000 bytes in "jumbo" frames on larger ethernet bandwiths). Data contains the network layer datagram, and is "stuffed" with dummy data if the length isnt at least 46 bytes
+- Destination Address is 6 bytes. A reciever will check this field to see whether it is to pass the frame's data up to the network layer or not
+- Source Address is 6 bytes as well
+- Type Field is 2 bytes and allows ethernet to multiplex/demultiplex other network layer protocols outside of IP. ARP protocol also has its own value for this field (08 06).
+- Cyclic Redundancy Check (CRC) is 4 bytes, and as discussed earlier, used to detect bit errors in a frame
+- Preamble is 8 bytes, and it is an alternating seqence of 0's and 1's until the last byte that ends with 2 1's. It is used to "wake up" the receiving adapter and synchronize the sender and recievers clocks (Link Layer messaging doesnt include handshaking similar to IP and UDP)
+
+Ethernet technologies to not provide reliable service. Acknowledgements are not sent concluding the result of a CRC check by the link layer
+
+Ethernet technologies, such as the increased bandwith cables, have been standardized over the years by IEEE 802.3 CSMA/CD Ethernet working group
+Looking at an example of one Ethernet Technology, 100BASE-T. the number stands for the number of Megabits per second of bandwith, the BASE stands for baseband ethernet, meaning the physical medium only carries ethernet traffic (almost all of them), then the T stands for the physical medium used out of coaxial cable, copper wire, and fiber (T refers to twisted pair copper wires). Fiber specifically can travel much farther (kilometers) than copper (meters)
+
+Today, most ethernet is different from original bus-topology designs. Now most nodes are connected via point to point segments, removing the possibility of collision and removing the need for CDMA/CD. In switch based LANs, there is actually no need for a MAC protocol
+
+
+Link Layer Switches
+
+
+
+
