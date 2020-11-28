@@ -1504,8 +1504,38 @@ VLAN trunking is a scalable approach to interconnect VLAN switches. The IEEE def
 VLANs outside of being based on port, can also be based off MAC address in MAC based VLANs. They can also be defined on network layer protocols
 
 
-Link Virtualization
 
+Multiprotocol Label Switching (MLPS)
+
+The goal of MPLS when being concieved in the mid to late 90s was to improve the speed of IP routers by augmenting destination based IP datagram forwarding. In MPLS, fixed lengthed labels are added to datagrams, and routers are able to forward based on those labels instead of IP address whenever possible
+MPLS adds a header field to the link layer frame between ethernet header and IP header
+Both routers must have MPLS capabilites to interact with MPLS frames/datagrams (known as a lable switched router)
+The router can use information in the MPLS header to determine where to forward the packet, without extracting the IP address from the datagram, making the process faster
+MLPS also allows the use of traffic engineering, letting a network administrator can override normal IP routing and force some traffic toward the same destination along a different path
+MPLS can also be used to implement virtual private networks (VPNs), MPLS enableds connectiing together various networks such as in a LAN. 
+
+
+
+Data Center Networking
+
+The cost for large data centers are huge, estimating at about 12 million dollars per 100,000 hosts
+45% includes the hosts themselves (which are replaced every 3-4 years), 25% for infastructure which includes transformers, uninterruptable power supplies, generators, and cooling systems, 15% for electricity costs, and 15% for networking equipment
+
+The hosts in the data centers are called the blades, and they do all the computation and storage that is needed by the service the data center is providing. Hosts are stacked in racks, each having about 20-40 hosts. The top slot of the rack holds a Top Of Rack (TOR) switch, that interconnects the hosts in the rack with other hosts in other racks. Hosts typically have 40 Gbps ethernet connectins to their TOR switches
+Border routers connecting the data center to the public internet, allowing for communication between internal hosts and external devices
+Data center network design involves the interconnection of the network and protocols the racks/border routers use, and is an important branch of computer networking
+
+
+Load Balancing
+
+Each application within a data center is provided with a public IP that the external clients request from. When a request comes in, a load balancer distributes these requests among hosts based off a function of their current load
+A load balancer provides a NAT like function, preventing clients from contacting the hosts directly
+Limited Host to Host capacity is where hosts in a hierarchical structure cant get their normal bandwith between each other, because they have to travel many levels in the architecture and end up sharing link capacity with every level there and below
+
+A fully connected topology has each switch in each tier fully connected with the tiers above and below them. This means host traffic never has to rise above the tier that contains the switches, and host to host capacity is improved
+An MDC is basically a minature containirized data center, with the ability to degrade gracefully over time
+For routing among interconnected topologies, routers can run the algorithms, or the hosts can be given many network interfaces and have their own routing algorithms running on the host itself
+Avalibility zones essentially replicate distinct data centers in a different nearby location, basically acting as a backup data center
 
 
 
