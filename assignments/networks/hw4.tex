@@ -1,0 +1,98 @@
+\documentclass[14pt]{article}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{extsizes}
+\usepackage{titling}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{indentfirst}
+\usepackage{caption}
+
+\newcommand{\bd}{\textbf}
+
+\setlength{\droptitle}{-5em} 
+
+\title{Computer Networks Homework 4}
+\author{Mitchell Meier}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+\item
+Bit Generator $G = 1001$ \\
+Data Payload $D = 10011101$ \\
+Size of R, $r = 3$ \\
+
+For R to be valid, the following must be true: \\
+
+$(D + R) \% G = 0$ \\
+$(10011101 + R) \% 1001 = 0$ \\
+$R =$ Remainder of $\frac{D*2^r}{G}$ \\
+
+Steps of $1001 \div 10011101000$ : \\
+Compare first 4 bits 1001 XOR 1001 = 0000, move onto next 4 bits \\
+1101 XOR 1001 = 0100, bring down 1 bit \\
+1000 XOR 1001 = 0001, bring down last 2 bits \\
+000100 = 100 = R
+
+
+\item
+Frames have L bits, R transmission speed \\
+1 slot takes L/R time to complete, 3 active nodes \\
+
+To find the efficeny of slotted ALOHA, we need to find the percent of total time where one node is transmitting and the rest are not \\
+
+$p =$ probability a given node is transmitting \\
+$1-p$ is the probability a given node is not transmitting \\
+$p(1-p)^{N-1}$ is the probabily a given node is transmitting and the rest are not \\
+$Np(1-p)^{N-1}$ is the probability that any of the nodes are transmitting and the rest are not (the case in which no collisions occur and a slot is successful in sloted ALOHA)\\
+
+To find the efficeny of regular ALOHA, we need to find the percent of total time where one node is transmitting a frame and no other node begins a transmission of a frame during that time (we assumed the same L/R time to transmit a frame) \\
+
+$p(1-p)^{2(N-1)}$ now represent the probability that a given node is transmitting and the rest are not \\
+$Np(1-p)^{2(N-1)}$ is the probability that any of the nodes are transmitting and the rest are not
+
+\begin{enumerate}[(1)]
+\item 
+Slotted ALOHA - $ME = 3(0.37)(1-0.37)^2 = 0.44$ R bits per second \\
+Normal ALOHA - $ME = 3(0.37)(1-0.37)^4 = 0.17$ R bits per second
+
+\item
+Slotted ALOHA - $ME = 3(0.59)(1-0.59)^2 = 0.298$ R bits per second \\
+Normal ALOHA - $ME = 3(0.59)(1-0.59)^4 = 0.05$ R bits per second
+\end{enumerate}
+
+\item
+Encoded channel output = all $Z_{i,m} = d_i \times c_{m}$ for i in M, and the m bit
+\begin{enumerate}[(1)]
+\item
+The encoded output for bit 1 is the same as M, -1,-1,-1,-1,1,-1,-1,-1 
+\item
+The decoded bit value for the channel output 1,1,1,1,-1,1,1,1 is -1
+
+\end{enumerate}
+
+\item
+No, because TCP's reliable delivery service could be utilized in network topoligies beside the internet's, where that network's lower layers may or may not provide reliable delivery service
+
+\item
+Range of K = ${0,1,2,...2^{n-1}}$ \\
+$n = 5$ , Range of K = [0, 16] \\
+Probability K = 4 is $\frac{1}{17}$
+
+\item
+There would be no advantage because increasing the size of RTS and CTS frames would also increase the probability of a collision, and that collision would last the same amout of time as it would for the same length DATA and ACK frames
+
+\item
+The user and node are not consideremultipule different access points when changing locations and connecting to a network. Since the laptop is always accessing a network through the same access point, it is not considered mobile
+\end{enumerate}
+
+\end{document}
