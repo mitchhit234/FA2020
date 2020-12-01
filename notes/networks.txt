@@ -1536,8 +1536,3 @@ A fully connected topology has each switch in each tier fully connected with the
 An MDC is basically a minature containirized data center, with the ability to degrade gracefully over time
 For routing among interconnected topologies, routers can run the algorithms, or the hosts can be given many network interfaces and have their own routing algorithms running on the host itself
 Avalibility zones essentially replicate distinct data centers in a different nearby location, basically acting as a backup data center
-
-
-
-
-
