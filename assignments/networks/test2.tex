@@ -1,0 +1,118 @@
+\documentclass[14pt]{article}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{extsizes}
+\usepackage{titling}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{indentfirst}
+\usepackage{caption}
+
+\newcommand{\bd}{\textbf}
+
+\setlength{\droptitle}{-5em} 
+
+\title{Computer Networks Final}
+\author{Mitchell Meier}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+\item
+\begin{enumerate}[(a)]
+\item
+True (if layer 4 and 5 are considered the Transport and Application layers)
+\item
+True
+\item
+True
+\item
+False
+\item
+False
+\item
+False
+\item
+False
+\item
+False
+\end{enumerate}
+
+\item
+\begin{enumerate}[(a)]
+\item
+The destination IP address and the destination port number
+\item
+The source IP address, source port number, destination IP address, and destination port number
+\item
+Yes, the client could change the source port number on which it is interacting with the server in order to open up more than one simultaneous TCP connection, since the server will demultiplexing all its TCP connections by the four tuple listed in part b
+\end{enumerate}
+
+\pagebreak
+
+\item
+With a probabilty of transmission $p$, Number of active nodes $N=4$, and an infinite supply of frames that each node is trying to transmit at size L bits per frame, and time unit of L/R, our maximum efficiency calculation is as follows: \\
+
+The probability that a given node is transmitting, and the rest are not, is $p(1-p)^{N-1}$ \\
+
+The probability that all other nodes also don't start a transmission in the time interval that it takes for our node to transmit L is $(1-p)^{N-1}$ \\
+
+Both those probabilites combined give us $p(1-p)^{2N -2}$ \\
+
+Since each node has the same possibility of this event occuring, we multiply our probability by N to get a final maximum efficeny equation of $Np(1-p)^{2N - 2}$ \\
+\begin{enumerate}
+\item
+When $p = 0.32$ and $N=4$, our maximum efficency equals 0.1265 the maximum transmission rate of our channel, R 
+\item
+When $p = 0.53$ and $N=4$, our maximum efficency equals 0.02285 the maximum transmission rate of our channel, R 
+\end{enumerate}
+\item
+Senders with these reciever codes can not have their original bits decoded because none of their code's dot products equal 0 \\
+
+For example, the dot product of $c^1$ and $c^2$ is $(1+1+1-1-1+1+1) = 2$ \\
+
+Furthermore, no dot product of any pair of these codes could equal 0 since each code has seven total slots. Codes will need an even number of slots to have a chance at having their dot product equal 0 \\
+
+If you try and decode the value of bit $d^1_0$, the equation looks something like this: \\
+
+\[d^1_0 = \frac{\sum\limits_{m=1}^{M} Z^*_{i,m} c^1_m}{M} = \frac{1+3+1+1-1+3+3}{M} = \frac{11}{7}\] 
+
+$\frac{11}{7}$ is obviously not a valid value for a bit, therefore this shows that the original bit sent from sender one can not be decoded in this situation
+
+\item
+The right most column and bottom rows will represent the parity bits
+\begin{enumerate}[(a)]
+\item
+\begin{center}
+\begin{tabular}{ c | c }
+00000111 11110000 & 1\\
+11100011 00010111 & 1\\
+10101101 01011000 & 0\\
+11011011 01110111 & 0\\
+01101110 01001001 & 0\\
+\hline
+11111100 10000001 & 0\\
+\end{tabular}
+\end{center}
+
+\item
+(3,11) should not be bit 1, it should be flipped back to bit 0 \\
+
+\item
+Bit flips are detectable since we can see the 3rd rows parity bit is invalid, as well as the parity bits themselves for the columns (5 and 12 seem to have errors, but the parity bits themselves seem to perhaps also have errors). With all these error combinations, it is not possible to deduce where exactly an error has occured with the information parity bits give us. Therefore, errors can be deteced (in the sense that we know there is an error somewhere in the packet, not that we know that errors exact location), but not corrected, for any combination of two errors in this packet
+\end{enumerate}
+\item
+The reason inter-AS and intra-AS protocols differ from each other in the internet is because the protocol used for inter-autonomus system routing in the internet (Border Gateway Protocol) has to be the same for all Autonomous Systems in order for coordination among multipule AS's to be possible. However, for intra-AS protocols, there is no standard protocol needed, since the entire system is under the same administrative control. With other protocols now avaliable, system admins can custom tailor their intra-AS routing protocol based on the needs of their specific Autonomous system (optimization, system polocies, etc.) 
+\end{enumerate}
+
+\subsubsection*{Bonus}
+Two mobile nodes in a foreign network, sharing the same foreign agent, will have the same care-of-address. They will both have the address of that foriegn agent. It will be up to the foreign agent to send the appropriate packets to each mobile host by demultiplexing incoming packets
+\end{document}

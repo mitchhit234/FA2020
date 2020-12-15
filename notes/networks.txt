@@ -1170,7 +1170,7 @@ The goal of hot potato routing is to get packets out of one's own AS as quickly 
 
 Route Selection Algorithm (BGP's)
 
-For any given destination prefix, the input to BGP's route selection algorithm is the sret of all routes to that prefix that have been learned by the router
+For any given destination prefix, the input to BGP's route selection algorithm is the set of all routes to that prefix that have been learned by the router
 
 Routes with higher local preference values (configed by system admins) will be favored over others. From these high preference routes, the route with the shortest AS-PATH is selected (least amount of ASs traveled through, distance vector algorithm). If there is still ties, hot potato routing is then used
 
