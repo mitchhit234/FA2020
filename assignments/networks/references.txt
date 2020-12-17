@@ -1,0 +1,5 @@
+“Crate Libp2p,” DocRS. [Online]. Available: https://docs.rs/libp2p/0.32.2/libp2p/. 
+
+“rust-libp2p,” Github. [Online]. Available: https://github.com/libp2p/rust-libp2p.
+
+“Crate Serde,” serde - Rust. [Online]. Available: https://docs.serde.rs/serde/.
