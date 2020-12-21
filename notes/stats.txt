@@ -208,3 +208,5 @@ Power = 1 - beta
 
 P value is the probability of observing data as extreme or more extreme than that which was observed. It is also the smallest significance level at which the null hypothesis would be rejected for the given data
 If p value is less than a, reject H_0, otherwise fail to reject H_0
+
+git test
