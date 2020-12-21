@@ -210,3 +210,5 @@ P value is the probability of observing data as extreme or more extreme than tha
 If p value is less than a, reject H_0, otherwise fail to reject H_0
 
 git test
+
+testing
